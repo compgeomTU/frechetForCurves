@@ -20,7 +20,7 @@ Python API package. The plan for this API is to be able to:
     Frechet Distance)
   * Visualizing the free space for epsilon (using Frechet Distance)
 
-### Documentation
+### Documentations
   All detailed Documentation is going to be generated using Doxygen located in
   '/docs.'
 

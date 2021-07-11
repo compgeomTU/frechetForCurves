@@ -76,4 +76,4 @@ weak_distance_ffi.set_source("_frechet._weak_distance",
 if __name__ == "__main__":
     weak_distance_ffi.compile(verbose = True)
     strong_distance_ffi.compile(verbose = True)
-    shutil.move("./_frechet", "../../pyfrechet/_frechet")
+    shutil.move("./_frechet", "../../PyFrechet/_frechet")

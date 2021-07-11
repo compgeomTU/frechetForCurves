@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
   printf("--------------------------\n\n");
 
   for(int i = 1; i < v1; i++) {
-    for(int j = 1; j < 20; j++) {
+    for(int j = 1; j < v2; j++) {
       printf("\n\n  Cell at (%d , %d):\n\n", i, j);
 
       printf(
