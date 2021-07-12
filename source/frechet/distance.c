@@ -245,14 +245,14 @@ point* getverticalcurve() {
   return curve2;
 }
 
-/*! \fn int gethorizontalverticies()
+/*! \fn int gethorizontaledges()
 */
-int gethorizontalverticies() {
+int gethorizontaledges() {
   return no1;
 }
 
-/*! \fn int getverticalverticies()
+/*! \fn int getverticaledges()
 */
-int getverticalverticies() {
+int getverticaledges() {
   return no2;
 }

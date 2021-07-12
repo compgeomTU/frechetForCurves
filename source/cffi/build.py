@@ -37,9 +37,9 @@ distance_cdef = """
 
     point* getverticalcurve();
 
-    int gethorizontalverticies();
+    int gethorizontaledges();
 
-    int getverticalverticies();
+    int getverticaledges();
 
     bool isreachable();
 """

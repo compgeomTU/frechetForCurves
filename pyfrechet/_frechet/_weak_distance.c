@@ -771,20 +771,20 @@ _cffi_f_gethorizontalcurve(PyObject *self, PyObject *noarg)
 #  define _cffi_f_gethorizontalcurve _cffi_d_gethorizontalcurve
 #endif
 
-static int _cffi_d_gethorizontalverticies(void)
+static int _cffi_d_gethorizontaledges(void)
 {
-  return gethorizontalverticies();
+  return gethorizontaledges();
 }
 #ifndef PYPY_VERSION
 static PyObject *
-_cffi_f_gethorizontalverticies(PyObject *self, PyObject *noarg)
+_cffi_f_gethorizontaledges(PyObject *self, PyObject *noarg)
 {
   int result;
   PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
   _cffi_restore_errno();
-  { result = gethorizontalverticies(); }
+  { result = gethorizontaledges(); }
   _cffi_save_errno();
   Py_END_ALLOW_THREADS
 
@@ -794,7 +794,7 @@ _cffi_f_gethorizontalverticies(PyObject *self, PyObject *noarg)
   return pyresult;
 }
 #else
-#  define _cffi_f_gethorizontalverticies _cffi_d_gethorizontalverticies
+#  define _cffi_f_gethorizontaledges _cffi_d_gethorizontaledges
 #endif
 
 static point * _cffi_d_getverticalcurve(void)
@@ -823,20 +823,20 @@ _cffi_f_getverticalcurve(PyObject *self, PyObject *noarg)
 #  define _cffi_f_getverticalcurve _cffi_d_getverticalcurve
 #endif
 
-static int _cffi_d_getverticalverticies(void)
+static int _cffi_d_getverticaledges(void)
 {
-  return getverticalverticies();
+  return getverticaledges();
 }
 #ifndef PYPY_VERSION
 static PyObject *
-_cffi_f_getverticalverticies(PyObject *self, PyObject *noarg)
+_cffi_f_getverticaledges(PyObject *self, PyObject *noarg)
 {
   int result;
   PyObject *pyresult;
 
   Py_BEGIN_ALLOW_THREADS
   _cffi_restore_errno();
-  { result = getverticalverticies(); }
+  { result = getverticaledges(); }
   _cffi_save_errno();
   Py_END_ALLOW_THREADS
 
@@ -846,7 +846,7 @@ _cffi_f_getverticalverticies(PyObject *self, PyObject *noarg)
   return pyresult;
 }
 #else
-#  define _cffi_f_getverticalverticies _cffi_d_getverticalverticies
+#  define _cffi_f_getverticaledges _cffi_d_getverticaledges
 #endif
 
 static _Bool _cffi_d_isreachable(void)
@@ -931,9 +931,9 @@ static const struct _cffi_global_s _cffi_globals[] = {
   { "createcurves", (void *)_cffi_f_createcurves, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 11), (void *)_cffi_d_createcurves },
   { "getfreespace", (void *)_cffi_f_getfreespace, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 5), (void *)_cffi_d_getfreespace },
   { "gethorizontalcurve", (void *)_cffi_f_gethorizontalcurve, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 9), (void *)_cffi_d_gethorizontalcurve },
-  { "gethorizontalverticies", (void *)_cffi_f_gethorizontalverticies, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 7), (void *)_cffi_d_gethorizontalverticies },
+  { "gethorizontaledges", (void *)_cffi_f_gethorizontaledges, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 7), (void *)_cffi_d_gethorizontaledges },
   { "getverticalcurve", (void *)_cffi_f_getverticalcurve, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 9), (void *)_cffi_d_getverticalcurve },
-  { "getverticalverticies", (void *)_cffi_f_getverticalverticies, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 7), (void *)_cffi_d_getverticalverticies },
+  { "getverticaledges", (void *)_cffi_f_getverticaledges, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 7), (void *)_cffi_d_getverticaledges },
   { "isreachable", (void *)_cffi_f_isreachable, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 3), (void *)_cffi_d_isreachable },
   { "setfreespace", (void *)_cffi_f_setfreespace, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 16), (void *)_cffi_d_setfreespace },
 };

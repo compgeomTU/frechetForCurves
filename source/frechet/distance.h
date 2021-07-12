@@ -180,13 +180,13 @@ point* gethorizontalcurve();
 */
 point* getverticalcurve();
 
-/*! \fn int gethorizontalverticies()
+/*! \fn int gethorizontaledges()
 */
-int gethorizontalverticies();
+int gethorizontaledges();
 
-/*! \fn int getverticalverticies()
+/*! \fn int getverticaledges()
 */
-int getverticalverticies();
+int getverticaledges();
 
 /*! \fn bool isreachable()
     \brief

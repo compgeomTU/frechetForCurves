@@ -28,8 +28,8 @@ int main(int argc, char *argv[]) {
   create_freespace_reachabilitytable();
   setfreespace(100);
 
-  int v1 = gethorizontalverticies();
-  int v2 = getverticalverticies();
+  int v1 = gethorizontaledges();
+  int v2 = getverticaledges();
   freespace fs = getfreespace();
 
   printf("  Horizontal verticies: %d\n", v1);
