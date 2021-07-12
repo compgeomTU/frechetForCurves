@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include "../source/frechet/strong_distance.c"
+#include "../src/frechet/strong_distance.c"
 
 int main(int argc, char *argv[]) {
   char *curve2filename = "test_curve_1.txt";

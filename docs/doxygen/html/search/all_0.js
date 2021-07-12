@@ -1,14 +1,9 @@
 var searchData=
 [
-  ['_5fcffi_5fenum_5fs_0',['_cffi_enum_s',['../struct__cffi__enum__s.html',1,'']]],
-  ['_5fcffi_5fexternpy_5fs_1',['_cffi_externpy_s',['../struct__cffi__externpy__s.html',1,'']]],
-  ['_5fcffi_5ffield_5fs_2',['_cffi_field_s',['../struct__cffi__field__s.html',1,'']]],
-  ['_5fcffi_5ffreeme_5fs_3',['_cffi_freeme_s',['../struct__cffi__freeme__s.html',1,'']]],
-  ['_5fcffi_5fgetconst_5fs_4',['_cffi_getconst_s',['../struct__cffi__getconst__s.html',1,'']]],
-  ['_5fcffi_5fglobal_5fs_5',['_cffi_global_s',['../struct__cffi__global__s.html',1,'']]],
-  ['_5fcffi_5fparse_5finfo_5fs_6',['_cffi_parse_info_s',['../struct__cffi__parse__info__s.html',1,'']]],
-  ['_5fcffi_5fstruct_5funion_5fs_7',['_cffi_struct_union_s',['../struct__cffi__struct__union__s.html',1,'']]],
-  ['_5fcffi_5ftype_5fcontext_5fs_8',['_cffi_type_context_s',['../struct__cffi__type__context__s.html',1,'']]],
-  ['_5fcffi_5ftypename_5fs_9',['_cffi_typename_s',['../struct__cffi__typename__s.html',1,'']]],
-  ['_5fcffi_5funion_5falignment_5fu_10',['_cffi_union_alignment_u',['../union__cffi__union__alignment__u.html',1,'']]]
+  ['computemaxdistances_0',['computemaxdistances',['../weak__distance_8c.html#a36f33f6475e4e3ea68a91973e8dc965f',1,'computemaxdistances(double epsilon):&#160;weak_distance.c'],['../weak__distance_8h.html#a36f33f6475e4e3ea68a91973e8dc965f',1,'computemaxdistances(double epsilon):&#160;weak_distance.c']]],
+  ['create_5ffreespace_5freachabilitytable_1',['create_freespace_reachabilitytable',['../distance_8h.html#ab40eb0b94d8aee506fd3adffd2c44ca7',1,'create_freespace_reachabilitytable():&#160;strong_distance.c'],['../strong__distance_8c.html#ab40eb0b94d8aee506fd3adffd2c44ca7',1,'create_freespace_reachabilitytable():&#160;strong_distance.c'],['../weak__distance_8c.html#ab40eb0b94d8aee506fd3adffd2c44ca7',1,'create_freespace_reachabilitytable():&#160;weak_distance.c']]],
+  ['createcurves_2',['createcurves',['../distance_8c.html#a4fa35c2f97ee1567e9b929974402e179',1,'createcurves(char *curve1filename, char *curve2filename, bool reversecurve2):&#160;distance.c'],['../distance_8h.html#a4fa35c2f97ee1567e9b929974402e179',1,'createcurves(char *curve1filename, char *curve2filename, bool reversecurve2):&#160;distance.c']]],
+  ['curve1_3',['curve1',['../distance_8c.html#a3f25295ee4ccd3de14aefb6adf5338e7',1,'curve1():&#160;distance.c'],['../distance_8h.html#afbfd317022590cb0256aa2aa2d2467bd',1,'curve1():&#160;distance.c']]],
+  ['curve2_4',['curve2',['../distance_8c.html#a47a4e2b4364e6ca75ac26b480731f9ac',1,'curve2():&#160;distance.c'],['../distance_8h.html#af13b70a31c5d0532fec7216ea42aec95',1,'curve2():&#160;distance.c']]],
+  ['curvetmp_5',['curvetmp',['../distance_8c.html#ae5b5b15d6ade59db47c9cf1d81aadd70',1,'curvetmp():&#160;distance.c'],['../distance_8h.html#af136086c24cbe266b5382df09f87617c',1,'curvetmp():&#160;distance.c']]]
 ];

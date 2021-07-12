@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PyFrechet: /Users/willrodman/Desktop/PyFrechet/source/distance/distance.h Source File</title>
+<title>PyFrechet: /Users/willrodman/Desktop/Computational_Geometry_@_Tulane/frechetForCurves/src/frechet/distance.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a76579d77f54aaebaf5eff484f21792f.html">distance</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_608c8f61e9d0f9473b7b2e51fd0f6eee.html">frechet</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -76,64 +76,80 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structpoint.html">   43</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">double</span> x, y;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <a class="code" href="structpoint.html">point</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">extern</span> <a class="code" href="structpoint.html">point</a> *<a class="code" href="distance_8h.html#afbfd317022590cb0256aa2aa2d2467bd">curve1</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">extern</span> <a class="code" href="structpoint.html">point</a> *<a class="code" href="distance_8h.html#af13b70a31c5d0532fec7216ea42aec95">curve2</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">extern</span> <a class="code" href="structpoint.html">point</a> *<a class="code" href="distance_8h.html#af136086c24cbe266b5382df09f87617c">curvetmp</a>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="distance_8h.html#a9482bab331a261aec99a94372ee7e382">no1</a>, <a class="code" href="distance_8c.html#ae61ba4b7336a8141bdc6ed565fe5c5fc">no2</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#ab70a0e0006ca61f927a6f5fa7637da61">vFSs</a>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#a087013096b8a154a020d821e867f5b3d">vFSe</a>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#ad3d24b6c9f0e6ed57019b098edf61175">hFSs</a>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#aa3faf13133c21b16fa8bba1c31b6c9ac">hFSe</a>;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#a28e4fc27cf2a03506bf59da0d13ace38">vRTs</a>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#a3cdf02c0d99ad69d82b81a97e16eb520">vRTe</a>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#a52eb08bbc33ab44cd5306f81d3c9cb38">hRTs</a>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#a12633e6c8f21f67116c8f59dc7a3585e">hRTe</a>;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">void</span> <a class="code" href="distance_8h.html#a4fa35c2f97ee1567e9b929974402e179">createcurves</a>(<span class="keywordtype">char</span>* curve1filename, <span class="keywordtype">char</span>* curve2filename, \</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                  <span class="keywordtype">bool</span> reversecurve2);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keywordtype">void</span> <a class="code" href="distance_8h.html#a5efac0e35766b8f050f052dfa11813e6">createfreespace</a>();</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keywordtype">void</span> calculatefreespace(<span class="keywordtype">double</span> x1, <span class="keywordtype">double</span> y1, <span class="keywordtype">double</span> x2, <span class="keywordtype">double</span> y2, \</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                        <span class="keywordtype">double</span> xa, <span class="keywordtype">double</span> ya, <span class="keywordtype">double</span> *start, <span class="keywordtype">double</span> *end, \</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        <span class="keywordtype">double</span> epsilon);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keywordtype">void</span> <a class="code" href="distance_8h.html#aed7f7da816d618b68d333c6a11027024">setfreespace</a>(<span class="keywordtype">double</span> epsilon);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="distance_8h.html#a34560de450e18058a06c171fec476279">ispath</a>();</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keywordtype">void</span> <a class="code" href="distance_8h.html#acd0f7ae6ab0afbef81931257d93331d2">destroyfreespace</a>();</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keywordtype">void</span> <a class="code" href="distance_8h.html#a6a57f9478f9e4f466cb9b07aac051cbd">destroycurves</a>();</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structpoint.html">point</a> <a class="code" href="structpoint.html">point</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structpoint.html">   45</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structpoint.html">point</a> {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">double</span> x, y;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structfreespace.html">freespace</a> <a class="code" href="structfreespace.html">freespace</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structfreespace.html">   53</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structfreespace.html">freespace</a> {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">double</span> **vertical_start;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">double</span> **vertical_end;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">double</span> **horizontal_start;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">double</span> **horizontal_end;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">extern</span> <a class="code" href="structpoint.html">point</a> *<a class="code" href="distance_8h.html#afbfd317022590cb0256aa2aa2d2467bd">curve1</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">extern</span> <a class="code" href="structpoint.html">point</a> *<a class="code" href="distance_8h.html#af13b70a31c5d0532fec7216ea42aec95">curve2</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">extern</span> <a class="code" href="structpoint.html">point</a> *<a class="code" href="distance_8h.html#af136086c24cbe266b5382df09f87617c">curvetmp</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="distance_8h.html#a9482bab331a261aec99a94372ee7e382">no1</a>, <a class="code" href="distance_8c.html#ae61ba4b7336a8141bdc6ed565fe5c5fc">no2</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#ab70a0e0006ca61f927a6f5fa7637da61">vFSs</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#a087013096b8a154a020d821e867f5b3d">vFSe</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#ad3d24b6c9f0e6ed57019b098edf61175">hFSs</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#aa3faf13133c21b16fa8bba1c31b6c9ac">hFSe</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#a28e4fc27cf2a03506bf59da0d13ace38">vRTs</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#a3cdf02c0d99ad69d82b81a97e16eb520">vRTe</a>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#a52eb08bbc33ab44cd5306f81d3c9cb38">hRTs</a>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">double</span> **<a class="code" href="distance_8h.html#a12633e6c8f21f67116c8f59dc7a3585e">hRTe</a>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keywordtype">void</span> <a class="code" href="distance_8h.html#a4fa35c2f97ee1567e9b929974402e179">createcurves</a>(<span class="keywordtype">char</span>* curve1filename, <span class="keywordtype">char</span>* curve2filename, \</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                  <span class="keywordtype">bool</span> reversecurve2);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keywordtype">void</span> <a class="code" href="distance_8h.html#ab40eb0b94d8aee506fd3adffd2c44ca7">create_freespace_reachabilitytable</a>();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">void</span> calculatefreespace(<span class="keywordtype">double</span> x1, <span class="keywordtype">double</span> y1, <span class="keywordtype">double</span> x2, <span class="keywordtype">double</span> y2, \</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        <span class="keywordtype">double</span> xa, <span class="keywordtype">double</span> ya, <span class="keywordtype">double</span> *start, <span class="keywordtype">double</span> *end, \</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        <span class="keywordtype">double</span> epsilon);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">void</span> <a class="code" href="distance_8h.html#aed7f7da816d618b68d333c6a11027024">setfreespace</a>(<span class="keywordtype">double</span> epsilon);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<a class="code" href="structfreespace.html">freespace</a> getfreespace();</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<a class="code" href="structpoint.html">point</a>* gethorizontalcurve();</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<a class="code" href="structpoint.html">point</a>* getverticalcurve();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keywordtype">int</span> gethorizontaledges();</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="keywordtype">int</span> getverticaledges();</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="distance_8h.html#ac12b2906db16efa932a28c414e279cfe">isreachable</a>();</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="adistance_8c_html_ae61ba4b7336a8141bdc6ed565fe5c5fc"><div class="ttname"><a href="distance_8c.html#ae61ba4b7336a8141bdc6ed565fe5c5fc">no2</a></div><div class="ttdeci">int no2</div><div class="ttdoc">Number of vertices for second curve.</div><div class="ttdef"><b>Definition:</b> distance.c:55</div></div>
 <div class="ttc" id="adistance_8h_html_a087013096b8a154a020d821e867f5b3d"><div class="ttname"><a href="distance_8h.html#a087013096b8a154a020d821e867f5b3d">vFSe</a></div><div class="ttdeci">double ** vFSe</div><div class="ttdoc">Vertical free space diagram end.</div><div class="ttdef"><b>Definition:</b> distance.c:63</div></div>
 <div class="ttc" id="adistance_8h_html_a12633e6c8f21f67116c8f59dc7a3585e"><div class="ttname"><a href="distance_8h.html#a12633e6c8f21f67116c8f59dc7a3585e">hRTe</a></div><div class="ttdeci">double ** hRTe</div><div class="ttdoc">Horizontal reachability table end.</div><div class="ttdef"><b>Definition:</b> distance.c:75</div></div>
 <div class="ttc" id="adistance_8h_html_a28e4fc27cf2a03506bf59da0d13ace38"><div class="ttname"><a href="distance_8h.html#a28e4fc27cf2a03506bf59da0d13ace38">vRTs</a></div><div class="ttdeci">double ** vRTs</div><div class="ttdoc">Vertical reachability table start.</div><div class="ttdef"><b>Definition:</b> distance.c:72</div></div>
-<div class="ttc" id="adistance_8h_html_a34560de450e18058a06c171fec476279"><div class="ttname"><a href="distance_8h.html#a34560de450e18058a06c171fec476279">ispath</a></div><div class="ttdeci">bool ispath()</div><div class="ttdoc">Checks to see if a path exists from bottom left to top right of free space diagram....</div><div class="ttdef"><b>Definition:</b> strong_distance.c:162</div></div>
 <div class="ttc" id="adistance_8h_html_a3cdf02c0d99ad69d82b81a97e16eb520"><div class="ttname"><a href="distance_8h.html#a3cdf02c0d99ad69d82b81a97e16eb520">vRTe</a></div><div class="ttdeci">double ** vRTe</div><div class="ttdoc">Vertical reachability table end.</div><div class="ttdef"><b>Definition:</b> distance.c:73</div></div>
 <div class="ttc" id="adistance_8h_html_a4fa35c2f97ee1567e9b929974402e179"><div class="ttname"><a href="distance_8h.html#a4fa35c2f97ee1567e9b929974402e179">createcurves</a></div><div class="ttdeci">void createcurves(char *curve1filename, char *curve2filename, bool reversecurve2)</div><div class="ttdoc">Reads data from the two input files and stores it to curve point arrays.</div><div class="ttdef"><b>Definition:</b> distance.c:80</div></div>
 <div class="ttc" id="adistance_8h_html_a52eb08bbc33ab44cd5306f81d3c9cb38"><div class="ttname"><a href="distance_8h.html#a52eb08bbc33ab44cd5306f81d3c9cb38">hRTs</a></div><div class="ttdeci">double ** hRTs</div><div class="ttdoc">Horizontal reachability table start.</div><div class="ttdef"><b>Definition:</b> distance.c:74</div></div>
-<div class="ttc" id="adistance_8h_html_a5efac0e35766b8f050f052dfa11813e6"><div class="ttname"><a href="distance_8h.html#a5efac0e35766b8f050f052dfa11813e6">createfreespace</a></div><div class="ttdeci">void createfreespace()</div><div class="ttdoc">Allocates memory for free space diagram and reachability table.</div><div class="ttdef"><b>Definition:</b> strong_distance.c:51</div></div>
-<div class="ttc" id="adistance_8h_html_a6a57f9478f9e4f466cb9b07aac051cbd"><div class="ttname"><a href="distance_8h.html#a6a57f9478f9e4f466cb9b07aac051cbd">destroycurves</a></div><div class="ttdeci">void destroycurves()</div><div class="ttdoc">Frees memory allocated for curves.</div><div class="ttdef"><b>Definition:</b> distance.c:259</div></div>
 <div class="ttc" id="adistance_8h_html_a9482bab331a261aec99a94372ee7e382"><div class="ttname"><a href="distance_8h.html#a9482bab331a261aec99a94372ee7e382">no1</a></div><div class="ttdeci">int no1</div><div class="ttdoc">Number of vertices for first curve.</div><div class="ttdef"><b>Definition:</b> distance.c:55</div></div>
 <div class="ttc" id="adistance_8h_html_aa3faf13133c21b16fa8bba1c31b6c9ac"><div class="ttname"><a href="distance_8h.html#aa3faf13133c21b16fa8bba1c31b6c9ac">hFSe</a></div><div class="ttdeci">double ** hFSe</div><div class="ttdoc">Horizontal free space diagram end.</div><div class="ttdef"><b>Definition:</b> distance.c:65</div></div>
+<div class="ttc" id="adistance_8h_html_ab40eb0b94d8aee506fd3adffd2c44ca7"><div class="ttname"><a href="distance_8h.html#ab40eb0b94d8aee506fd3adffd2c44ca7">create_freespace_reachabilitytable</a></div><div class="ttdeci">void create_freespace_reachabilitytable()</div><div class="ttdoc">Allocates memory for free space diagram and reachability table.</div><div class="ttdef"><b>Definition:</b> strong_distance.c:51</div></div>
 <div class="ttc" id="adistance_8h_html_ab70a0e0006ca61f927a6f5fa7637da61"><div class="ttname"><a href="distance_8h.html#ab70a0e0006ca61f927a6f5fa7637da61">vFSs</a></div><div class="ttdeci">double ** vFSs</div><div class="ttdoc">Vertical free space diagram start.</div><div class="ttdef"><b>Definition:</b> distance.c:62</div></div>
-<div class="ttc" id="adistance_8h_html_acd0f7ae6ab0afbef81931257d93331d2"><div class="ttname"><a href="distance_8h.html#acd0f7ae6ab0afbef81931257d93331d2">destroyfreespace</a></div><div class="ttdeci">void destroyfreespace()</div><div class="ttdoc">Frees memory allocated for free space diagram and reachability table.</div><div class="ttdef"><b>Definition:</b> distance.c:227</div></div>
+<div class="ttc" id="adistance_8h_html_ac12b2906db16efa932a28c414e279cfe"><div class="ttname"><a href="distance_8h.html#ac12b2906db16efa932a28c414e279cfe">isreachable</a></div><div class="ttdeci">bool isreachable()</div><div class="ttdoc">Checks to see if a path exists from bottom left to top right of free space diagram....</div><div class="ttdef"><b>Definition:</b> strong_distance.c:162</div></div>
 <div class="ttc" id="adistance_8h_html_ad3d24b6c9f0e6ed57019b098edf61175"><div class="ttname"><a href="distance_8h.html#ad3d24b6c9f0e6ed57019b098edf61175">hFSs</a></div><div class="ttdeci">double ** hFSs</div><div class="ttdoc">Horizontal free space diagram start.</div><div class="ttdef"><b>Definition:</b> distance.c:64</div></div>
 <div class="ttc" id="adistance_8h_html_aed7f7da816d618b68d333c6a11027024"><div class="ttname"><a href="distance_8h.html#aed7f7da816d618b68d333c6a11027024">setfreespace</a></div><div class="ttdeci">void setfreespace(double epsilon)</div><div class="ttdoc">Calculates the the bounderies of free space diagram.</div><div class="ttdef"><b>Definition:</b> distance.c:203</div></div>
 <div class="ttc" id="adistance_8h_html_af136086c24cbe266b5382df09f87617c"><div class="ttname"><a href="distance_8h.html#af136086c24cbe266b5382df09f87617c">curvetmp</a></div><div class="ttdeci">point * curvetmp</div><div class="ttdoc">Array of coordinates temorarily used if second curve must be reversed.</div><div class="ttdef"><b>Definition:</b> distance.c:50</div></div>
 <div class="ttc" id="adistance_8h_html_af13b70a31c5d0532fec7216ea42aec95"><div class="ttname"><a href="distance_8h.html#af13b70a31c5d0532fec7216ea42aec95">curve2</a></div><div class="ttdeci">point * curve2</div><div class="ttdoc">Array of coordinates for second curve.</div><div class="ttdef"><b>Definition:</b> distance.c:49</div></div>
 <div class="ttc" id="adistance_8h_html_afbfd317022590cb0256aa2aa2d2467bd"><div class="ttname"><a href="distance_8h.html#afbfd317022590cb0256aa2aa2d2467bd">curve1</a></div><div class="ttdeci">point * curve1</div><div class="ttdoc">Array of coordinates for first curve.</div><div class="ttdef"><b>Definition:</b> distance.c:48</div></div>
-<div class="ttc" id="astructpoint_html"><div class="ttname"><a href="structpoint.html">point</a></div><div class="ttdef"><b>Definition:</b> distance.h:43</div></div>
+<div class="ttc" id="astructfreespace_html"><div class="ttname"><a href="structfreespace.html">freespace</a></div><div class="ttdef"><b>Definition:</b> distance.h:53</div></div>
+<div class="ttc" id="astructpoint_html"><div class="ttname"><a href="structpoint.html">point</a></div><div class="ttdef"><b>Definition:</b> distance.h:45</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

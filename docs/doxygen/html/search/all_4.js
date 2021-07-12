@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['hcolor_23',['hColor',['../distance_2weak__distance_8c.html#a5df8280ae48f14323b19757226d79c97',1,'hColor():&#160;weak_distance.c'],['../weak__distance_8h.html#ab4a0d298bc4b8e40148e3959d080bdd3',1,'hColor():&#160;weak_distance.c']]],
-  ['hfse_24',['hFSe',['../distance_8c.html#acb2a3b8100938f1e0a80fd632370e2d4',1,'hFSe():&#160;distance.c'],['../distance_8h.html#aa3faf13133c21b16fa8bba1c31b6c9ac',1,'hFSe():&#160;distance.c']]],
-  ['hfss_25',['hFSs',['../distance_8c.html#ab3cfa418636b92817f410cf72a2d5e47',1,'hFSs():&#160;distance.c'],['../distance_8h.html#ad3d24b6c9f0e6ed57019b098edf61175',1,'hFSs():&#160;distance.c']]],
-  ['hreachedfrom_26',['hReachedFrom',['../distance_2weak__distance_8c.html#a3cb5e362b3a2254d78fbc911ebf2eba0',1,'hReachedFrom():&#160;weak_distance.c'],['../weak__distance_8h.html#a5fac4a43a30eaaefc9a0d4a8ea113d40',1,'hReachedFrom():&#160;weak_distance.c']]],
-  ['hrte_27',['hRTe',['../distance_8c.html#a7d7f8a9554d775c61e48ba3edf16600a',1,'hRTe():&#160;distance.c'],['../distance_8h.html#a12633e6c8f21f67116c8f59dc7a3585e',1,'hRTe():&#160;distance.c']]],
-  ['hrts_28',['hRTs',['../distance_8c.html#ab561c7977d2150abeacc086e59f5c65b',1,'hRTs():&#160;distance.c'],['../distance_8h.html#a52eb08bbc33ab44cd5306f81d3c9cb38',1,'hRTs():&#160;distance.c']]]
+  ['i_17',['i',['../struct_d_f_s.html#a894b223b073aa3639cce18ad550f993a',1,'DFS']]],
+  ['interval_18',['interval',['../struct_d_f_s.html#a7f32d5492078cbfb1736b7ba5724a3d9',1,'DFS']]],
+  ['isreachable_19',['isreachable',['../distance_8h.html#ac12b2906db16efa932a28c414e279cfe',1,'isreachable():&#160;strong_distance.c'],['../strong__distance_8c.html#ac12b2906db16efa932a28c414e279cfe',1,'isreachable():&#160;strong_distance.c'],['../weak__distance_8c.html#ac12b2906db16efa932a28c414e279cfe',1,'isreachable():&#160;weak_distance.c']]],
+  ['isreachable_5fvisit_20',['isreachable_visit',['../weak__distance_8c.html#a168e9714d292dd89de98917ca372cac8',1,'isreachable_visit(int currentI, int currentJ, int currentInterval):&#160;weak_distance.c'],['../weak__distance_8h.html#a98b7e0c49ad944c84c19030764e831dc',1,'isreachable_visit(int currentI, int currentJ, int currentInterval):&#160;weak_distance.c']]]
 ];

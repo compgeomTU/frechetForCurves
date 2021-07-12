@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['maxdouble_37',['maxdouble',['../distance_2strong__distance_8c.html#a9739d197ada56e8cd26b61f8ce500a00',1,'strong_distance.c']]]
+  ['no1_26',['no1',['../distance_8c.html#a9482bab331a261aec99a94372ee7e382',1,'no1():&#160;distance.c'],['../distance_8h.html#a9482bab331a261aec99a94372ee7e382',1,'no1():&#160;distance.c']]],
+  ['no2_27',['no2',['../distance_8c.html#ae61ba4b7336a8141bdc6ed565fe5c5fc',1,'distance.c']]]
 ];

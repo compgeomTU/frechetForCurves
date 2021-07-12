@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PyFrechet: /Users/willrodman/Desktop/PyFrechet/source/distance/weak_distance.h Source File</title>
+<title>PyFrechet: /Users/willrodman/Desktop/Computational_Geometry_@_Tulane/frechetForCurves/src/frechet/weak_distance.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a76579d77f54aaebaf5eff484f21792f.html">distance</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_608c8f61e9d0f9473b7b2e51fd0f6eee.html">frechet</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -93,7 +93,7 @@ $(function() {
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="weak__distance_8h.html#a9b31113909233cf06b8183884db9de5b">lastJ</a>;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="weak__distance_8h.html#a9cb005a79bae738217715c9f439dfdd2">lastInterval</a>;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> <a class="code" href="weak__distance_8h.html#aa7212faf320f65401ef6a6005813cbd3">ispath_visit</a>(<span class="keywordtype">int</span> currentI, <span class="keywordtype">int</span> currentJ, <span class="keywordtype">int</span> currentInterval);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> <a class="code" href="weak__distance_8h.html#a98b7e0c49ad944c84c19030764e831dc">isreachable_visit</a>(<span class="keywordtype">int</span> currentI, <span class="keywordtype">int</span> currentJ, <span class="keywordtype">int</span> currentInterval);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="weak__distance_8h.html#a36f33f6475e4e3ea68a91973e8dc965f">computemaxdistances</a>(<span class="keywordtype">double</span> epsilon);</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
@@ -106,9 +106,9 @@ $(function() {
 <div class="ttc" id="aweak__distance_8h_html_a36f33f6475e4e3ea68a91973e8dc965f"><div class="ttname"><a href="weak__distance_8h.html#a36f33f6475e4e3ea68a91973e8dc965f">computemaxdistances</a></div><div class="ttdeci">bool computemaxdistances(double epsilon)</div><div class="ttdoc">Check if path exists for path epsilon if a curve only contains one vertice.</div><div class="ttdef"><b>Definition:</b> weak_distance.c:339</div></div>
 <div class="ttc" id="aweak__distance_8h_html_a4f9146ac552fb1697bd5e62db3d4807a"><div class="ttname"><a href="weak__distance_8h.html#a4f9146ac552fb1697bd5e62db3d4807a">FSfound</a></div><div class="ttdeci">bool FSfound</div><div class="ttdoc">Global variable that declares if a path for epsilon has been found.</div><div class="ttdef"><b>Definition:</b> weak_distance.c:72</div></div>
 <div class="ttc" id="aweak__distance_8h_html_a5fac4a43a30eaaefc9a0d4a8ea113d40"><div class="ttname"><a href="weak__distance_8h.html#a5fac4a43a30eaaefc9a0d4a8ea113d40">hReachedFrom</a></div><div class="ttdeci">DFS ** hReachedFrom</div><div class="ttdoc">Predecessor pointers for horizontal intervals.</div><div class="ttdef"><b>Definition:</b> weak_distance.c:71</div></div>
+<div class="ttc" id="aweak__distance_8h_html_a98b7e0c49ad944c84c19030764e831dc"><div class="ttname"><a href="weak__distance_8h.html#a98b7e0c49ad944c84c19030764e831dc">isreachable_visit</a></div><div class="ttdeci">void isreachable_visit(int currentI, int currentJ, int currentInterval)</div><div class="ttdoc">Recursive function that supports ispath().</div><div class="ttdef"><b>Definition:</b> weak_distance.c:115</div></div>
 <div class="ttc" id="aweak__distance_8h_html_a9b31113909233cf06b8183884db9de5b"><div class="ttname"><a href="weak__distance_8h.html#a9b31113909233cf06b8183884db9de5b">lastJ</a></div><div class="ttdeci">int lastJ</div><div class="ttdef"><b>Definition:</b> weak_distance.c:79</div></div>
 <div class="ttc" id="aweak__distance_8h_html_a9cb005a79bae738217715c9f439dfdd2"><div class="ttname"><a href="weak__distance_8h.html#a9cb005a79bae738217715c9f439dfdd2">lastInterval</a></div><div class="ttdeci">int lastInterval</div><div class="ttdef"><b>Definition:</b> weak_distance.c:80</div></div>
-<div class="ttc" id="aweak__distance_8h_html_aa7212faf320f65401ef6a6005813cbd3"><div class="ttname"><a href="weak__distance_8h.html#aa7212faf320f65401ef6a6005813cbd3">ispath_visit</a></div><div class="ttdeci">void ispath_visit(int currentI, int currentJ, int currentInterval)</div><div class="ttdoc">Recursive function that supports ispath().</div><div class="ttdef"><b>Definition:</b> weak_distance.c:115</div></div>
 <div class="ttc" id="aweak__distance_8h_html_ab4a0d298bc4b8e40148e3959d080bdd3"><div class="ttname"><a href="weak__distance_8h.html#ab4a0d298bc4b8e40148e3959d080bdd3">hColor</a></div><div class="ttdeci">int ** hColor</div><div class="ttdoc">Horizontal interval color.</div><div class="ttdef"><b>Definition:</b> weak_distance.c:64</div></div>
 <div class="ttc" id="aweak__distance_8h_html_ace9e66bac92e1cb1bee97e0d3e250a51"><div class="ttname"><a href="weak__distance_8h.html#ace9e66bac92e1cb1bee97e0d3e250a51">vReachedFrom</a></div><div class="ttdeci">DFS ** vReachedFrom</div><div class="ttdoc">Predecessor pointers for vertical intervals.</div><div class="ttdef"><b>Definition:</b> weak_distance.c:70</div></div>
 <div class="ttc" id="aweak__distance_8h_html_aec4fcd8903bdf12442c207add1a7be5f"><div class="ttname"><a href="weak__distance_8h.html#aec4fcd8903bdf12442c207add1a7be5f">vColor</a></div><div class="ttdeci">int ** vColor</div><div class="ttdoc">Vertical interval color.</div><div class="ttdef"><b>Definition:</b> weak_distance.c:63</div></div>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PyFrechet: /Users/willrodman/Desktop/PyFrechet/source/distance/weak_distance.h File Reference</title>
+<title>PyFrechet: /Users/willrodman/Desktop/Computational_Geometry_@_Tulane/frechetForCurves/src/frechet/weak_distance.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_a76579d77f54aaebaf5eff484f21792f.html">distance</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_608c8f61e9d0f9473b7b2e51fd0f6eee.html">frechet</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,9 +89,9 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa7212faf320f65401ef6a6005813cbd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="weak__distance_8h.html#aa7212faf320f65401ef6a6005813cbd3">ispath_visit</a> (int currentI, int currentJ, int currentInterval)</td></tr>
-<tr class="memdesc:aa7212faf320f65401ef6a6005813cbd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursive function that supports <a class="el" href="distance_8h.html#a34560de450e18058a06c171fec476279" title="Checks to see if a path exists from bottom left to top right of free space diagram....">ispath()</a>.  <a href="weak__distance_8h.html#aa7212faf320f65401ef6a6005813cbd3">More...</a><br /></td></tr>
-<tr class="separator:aa7212faf320f65401ef6a6005813cbd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98b7e0c49ad944c84c19030764e831dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="weak__distance_8h.html#a98b7e0c49ad944c84c19030764e831dc">isreachable_visit</a> (int currentI, int currentJ, int currentInterval)</td></tr>
+<tr class="memdesc:a98b7e0c49ad944c84c19030764e831dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursive function that supports ispath().  <a href="weak__distance_8h.html#a98b7e0c49ad944c84c19030764e831dc">More...</a><br /></td></tr>
+<tr class="separator:a98b7e0c49ad944c84c19030764e831dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36f33f6475e4e3ea68a91973e8dc965f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="weak__distance_8h.html#a36f33f6475e4e3ea68a91973e8dc965f">computemaxdistances</a> (double epsilon)</td></tr>
 <tr class="memdesc:a36f33f6475e4e3ea68a91973e8dc965f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if path exists for path epsilon if a curve only contains one vertice.  <a href="weak__distance_8h.html#a36f33f6475e4e3ea68a91973e8dc965f">More...</a><br /></td></tr>
 <tr class="separator:a36f33f6475e4e3ea68a91973e8dc965f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,14 +160,14 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="we
 
 </div>
 </div>
-<a id="aa7212faf320f65401ef6a6005813cbd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7212faf320f65401ef6a6005813cbd3">&#9670;&nbsp;</a></span>ispath_visit()</h2>
+<a id="a98b7e0c49ad944c84c19030764e831dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98b7e0c49ad944c84c19030764e831dc">&#9670;&nbsp;</a></span>isreachable_visit()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ispath_visit </td>
+          <td class="memname">void isreachable_visit </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>currentI</em>, </td>
@@ -192,7 +192,7 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="we
       </table>
 </div><div class="memdoc">
 
-<p>Recursive function that supports <a class="el" href="distance_8h.html#a34560de450e18058a06c171fec476279" title="Checks to see if a path exists from bottom left to top right of free space diagram....">ispath()</a>. </p>
+<p>Recursive function that supports ispath(). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">currentI</td><td></td></tr>
@@ -201,7 +201,7 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="we
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="distance_8h.html#a34560de450e18058a06c171fec476279" title="Checks to see if a path exists from bottom left to top right of free space diagram....">ispath()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>ispath() </dd></dl>
 
 </div>
 </div>
@@ -227,9 +227,9 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="we
 </div><div class="memdoc">
 
 <p>Global variable that declares if a path for epsilon has been found. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="weak__distance_8h.html#aa7212faf320f65401ef6a6005813cbd3" title="Recursive function that supports ispath().">ispath_visit()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd>ispath_visit() </dd>
 <dd>
-<a class="el" href="distance_8h.html#a34560de450e18058a06c171fec476279" title="Checks to see if a path exists from bottom left to top right of free space diagram....">ispath()</a> </dd></dl>
+ispath() </dd></dl>
 
 </div>
 </div>
@@ -252,7 +252,7 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="we
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="weak__distance_8h.html#aa7212faf320f65401ef6a6005813cbd3" title="Recursive function that supports ispath().">ispath_visit()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>ispath_visit() </dd></dl>
 
 </div>
 </div>
@@ -275,7 +275,7 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="we
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="weak__distance_8h.html#aa7212faf320f65401ef6a6005813cbd3" title="Recursive function that supports ispath().">ispath_visit()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>ispath_visit() </dd></dl>
 
 </div>
 </div>
@@ -298,7 +298,7 @@ int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="we
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="weak__distance_8h.html#aa7212faf320f65401ef6a6005813cbd3" title="Recursive function that supports ispath().">ispath_visit()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>ispath_visit() </dd></dl>
 
 </div>
 </div>
