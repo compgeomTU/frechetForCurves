@@ -55,7 +55,7 @@ class StrongDistance:
         curve2_filepath_ascii = curve2_filepath.encode('ascii')
 
         return_code = _sd_createcurves(curve1_filepath_ascii, \
-        curve2_filepath_ascii, reverse_curve2)
+            curve2_filepath_ascii, reverse_curve2)
 
         if return_code != 0:
 
@@ -73,7 +73,7 @@ class StrongDistance:
 
         return cls()
 
-    def setfreespace(self, epsilon):
+    def setfreespace(epsilon):
         _sd_setfreespace(epsilon)
 
     def getverticalcurve():
