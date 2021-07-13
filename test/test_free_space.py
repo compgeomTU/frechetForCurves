@@ -10,7 +10,7 @@ import math
 import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
 
-sys.path.insert(0, "../PyFrechet")
+sys.path.insert(0, "../src/pyfrechet")
 
 # importing frechet functions from package
 # shares functions must be renamed if inside same scope to avoid collisions
@@ -96,6 +96,3 @@ plt.plot(x, y, 'o', c = 'grey', markersize = 12)
 plt.plot(free_x, free_y, 'o', c = 'white', markersize = 9.5)
 
 plt.show()
-
-
-# python3 test_free_space.py

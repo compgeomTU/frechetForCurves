@@ -574,21 +574,21 @@ static void (*_cffi_call_python_org)(struct _cffi_externpy_s *, char *);
 /************************************************************/
 
 static void *_cffi_types[] = {
-/*  0 */ _CFFI_OP(_CFFI_OP_FUNCTION, 14), // _Bool()(double)
+/*  0 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // _Bool()(double)
 /*  1 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14), // double
 /*  2 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/*  3 */ _CFFI_OP(_CFFI_OP_FUNCTION, 14), // _Bool()(void)
+/*  3 */ _CFFI_OP(_CFFI_OP_FUNCTION, 10), // _Bool()(void)
 /*  4 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
 /*  5 */ _CFFI_OP(_CFFI_OP_FUNCTION, 24), // freespace()(void)
 /*  6 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/*  7 */ _CFFI_OP(_CFFI_OP_FUNCTION, 25), // int()(void)
-/*  8 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/*  9 */ _CFFI_OP(_CFFI_OP_FUNCTION, 26), // point *()(void)
-/* 10 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
-/* 11 */ _CFFI_OP(_CFFI_OP_FUNCTION, 28), // void()(char *, char *, _Bool)
-/* 12 */ _CFFI_OP(_CFFI_OP_POINTER, 21), // char *
-/* 13 */ _CFFI_OP(_CFFI_OP_NOOP, 12),
-/* 14 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 1), // _Bool
+/*  7 */ _CFFI_OP(_CFFI_OP_FUNCTION, 25), // int()(char *, char *, _Bool)
+/*  8 */ _CFFI_OP(_CFFI_OP_POINTER, 21), // char *
+/*  9 */ _CFFI_OP(_CFFI_OP_NOOP, 8),
+/* 10 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 1), // _Bool
+/* 11 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 12 */ _CFFI_OP(_CFFI_OP_FUNCTION, 25), // int()(void)
+/* 13 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
+/* 14 */ _CFFI_OP(_CFFI_OP_FUNCTION, 26), // point *()(void)
 /* 15 */ _CFFI_OP(_CFFI_OP_FUNCTION_END, 0),
 /* 16 */ _CFFI_OP(_CFFI_OP_FUNCTION, 28), // void()(double)
 /* 17 */ _CFFI_OP(_CFFI_OP_PRIMITIVE, 14),
@@ -659,9 +659,9 @@ _cffi_f_create_freespace_reachabilitytable(PyObject *self, PyObject *noarg)
 #  define _cffi_f_create_freespace_reachabilitytable _cffi_d_create_freespace_reachabilitytable
 #endif
 
-static void _cffi_d_createcurves(char * x0, char * x1, _Bool x2)
+static int _cffi_d_createcurves(char * x0, char * x1, _Bool x2)
 {
-  createcurves(x0, x1, x2);
+  return createcurves(x0, x1, x2);
 }
 #ifndef PYPY_VERSION
 static PyObject *
@@ -672,6 +672,8 @@ _cffi_f_createcurves(PyObject *self, PyObject *args)
   _Bool x2;
   Py_ssize_t datasize;
   struct _cffi_freeme_s *large_args_free = NULL;
+  int result;
+  PyObject *pyresult;
   PyObject *arg0;
   PyObject *arg1;
   PyObject *arg2;
@@ -680,19 +682,19 @@ _cffi_f_createcurves(PyObject *self, PyObject *args)
     return NULL;
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(12), arg0, (char **)&x0);
+      _cffi_type(8), arg0, (char **)&x0);
   if (datasize != 0) {
     x0 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(12), arg0, (char **)&x0,
+    if (_cffi_convert_array_argument(_cffi_type(8), arg0, (char **)&x0,
             datasize, &large_args_free) < 0)
       return NULL;
   }
 
   datasize = _cffi_prepare_pointer_call_argument(
-      _cffi_type(12), arg1, (char **)&x1);
+      _cffi_type(8), arg1, (char **)&x1);
   if (datasize != 0) {
     x1 = ((size_t)datasize) <= 640 ? (char *)alloca((size_t)datasize) : NULL;
-    if (_cffi_convert_array_argument(_cffi_type(12), arg1, (char **)&x1,
+    if (_cffi_convert_array_argument(_cffi_type(8), arg1, (char **)&x1,
             datasize, &large_args_free) < 0)
       return NULL;
   }
@@ -703,14 +705,14 @@ _cffi_f_createcurves(PyObject *self, PyObject *args)
 
   Py_BEGIN_ALLOW_THREADS
   _cffi_restore_errno();
-  { createcurves(x0, x1, x2); }
+  { result = createcurves(x0, x1, x2); }
   _cffi_save_errno();
   Py_END_ALLOW_THREADS
 
   (void)self; /* unused */
+  pyresult = _cffi_from_c_int(result, int);
   if (large_args_free != NULL) _cffi_free_array_arguments(large_args_free);
-  Py_INCREF(Py_None);
-  return Py_None;
+  return pyresult;
 }
 #else
 #  define _cffi_f_createcurves _cffi_d_createcurves
@@ -928,12 +930,12 @@ struct _cffi_align__point { char x; point y; };
 static const struct _cffi_global_s _cffi_globals[] = {
   { "computemaxdistances", (void *)_cffi_f_computemaxdistances, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 0), (void *)_cffi_d_computemaxdistances },
   { "create_freespace_reachabilitytable", (void *)_cffi_f_create_freespace_reachabilitytable, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 19), (void *)_cffi_d_create_freespace_reachabilitytable },
-  { "createcurves", (void *)_cffi_f_createcurves, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 11), (void *)_cffi_d_createcurves },
+  { "createcurves", (void *)_cffi_f_createcurves, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_V, 7), (void *)_cffi_d_createcurves },
   { "getfreespace", (void *)_cffi_f_getfreespace, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 5), (void *)_cffi_d_getfreespace },
-  { "gethorizontalcurve", (void *)_cffi_f_gethorizontalcurve, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 9), (void *)_cffi_d_gethorizontalcurve },
-  { "gethorizontaledges", (void *)_cffi_f_gethorizontaledges, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 7), (void *)_cffi_d_gethorizontaledges },
-  { "getverticalcurve", (void *)_cffi_f_getverticalcurve, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 9), (void *)_cffi_d_getverticalcurve },
-  { "getverticaledges", (void *)_cffi_f_getverticaledges, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 7), (void *)_cffi_d_getverticaledges },
+  { "gethorizontalcurve", (void *)_cffi_f_gethorizontalcurve, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 14), (void *)_cffi_d_gethorizontalcurve },
+  { "gethorizontaledges", (void *)_cffi_f_gethorizontaledges, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 12), (void *)_cffi_d_gethorizontaledges },
+  { "getverticalcurve", (void *)_cffi_f_getverticalcurve, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 14), (void *)_cffi_d_getverticalcurve },
+  { "getverticaledges", (void *)_cffi_f_getverticaledges, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 12), (void *)_cffi_d_getverticaledges },
   { "isreachable", (void *)_cffi_f_isreachable, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_N, 3), (void *)_cffi_d_isreachable },
   { "setfreespace", (void *)_cffi_f_setfreespace, _CFFI_OP(_CFFI_OP_CPYTHON_BLTN_O, 16), (void *)_cffi_d_setfreespace },
 };

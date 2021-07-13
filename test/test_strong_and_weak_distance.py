@@ -6,7 +6,7 @@
 
 # roughting system path to _frechet package
 import sys
-sys.path.insert(0, "../PyFrechet")
+sys.path.insert(0, "../src/pyfrechet")
 
 # importing frechet functions from package
 # shares functions must be renamed if inside same scope to avoid collisions

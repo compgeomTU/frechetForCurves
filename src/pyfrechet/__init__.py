@@ -1,5 +1,4 @@
-from .distance import StrongDistance
-from .distance import WeakDistance
+from .distance import StrongDistance, WeakDistance
 
 from .optimise import BinarySearch
 

@@ -74,18 +74,18 @@ double **vRTe;
 double **hRTs;
 double **hRTe;
 
-/*! \fn void createcurves(char* curve1filename, char* curve2filename,
+/*! \fn int createcurves(char* curve1filename, char* curve2filename,
     bool reversecurve2)
 */
-void createcurves(char* curve1filename, char* curve2filename, \
+int createcurves(char* curve1filename, char* curve2filename, \
                   bool reversecurve2) {
   FILE *curve1fp, *curve2fp;
   int i, j;
   double x, y;
 
-  // return exit code 101 if file did not open correctly
+  // return return code 101 if file did not open correctly
   curve1fp = fopen(curve1filename, "r");
-  if(curve1fp == NULL) exit(101);
+  if(curve1fp == NULL) return 101;
 
   // first count vertices
   no1 = 0;
@@ -93,15 +93,15 @@ void createcurves(char* curve1filename, char* curve2filename, \
   while(fscanf(curve1fp, "%lf %lf", &x, &y) > 0) no1++;
   fclose(curve1fp);
   curve1fp = fopen(curve1filename, "r");
-  if(curve1fp == NULL) exit(101);
+  if(curve1fp == NULL) return 101;
 
   curve1 = (point*)malloc(no1 * sizeof(point));
 
   // read in curve, and delete duplicate vertices
   for(i = 0, j = 0; i < no1; i++, j++) {
 
-    // if file is written in invalid format will return exit code 102
-    if(fscanf(curve1fp , "%lf %lf", &x, &y) <= 0) exit(102);
+    // if file is written in invalid format will return code 102
+    if(fscanf(curve1fp , "%lf %lf", &x, &y) <= 0) return 102;
 
     curve1[j].x = x;
     curve1[j].y = y;
@@ -116,9 +116,9 @@ void createcurves(char* curve1filename, char* curve2filename, \
     curve1 = (point*)realloc(curve1, no1 * sizeof(point));
   }
 
-  // return exit code 103 if file did not open correctly
+  // return code 103 if file did not open correctly
   curve2fp = fopen(curve2filename, "r");
-  if(curve2fp == NULL) exit(103);
+  if(curve2fp == NULL) return 103;
 
   // first count vertices
   no2 = 0;
@@ -126,15 +126,15 @@ void createcurves(char* curve1filename, char* curve2filename, \
   while(fscanf(curve2fp, "%lf %lf", &x, &y) > 0) no2++;
   fclose(curve2fp);
   curve2fp = fopen(curve2filename, "r");
-  if(curve2fp == NULL) exit(103);
+  if(curve2fp == NULL) return 103;
 
   curvetmp = (point*)malloc(no2 * sizeof(point));
 
   // read in curve, and delete duplicate vertices
   // store in temporary array in order to reverse curve later if needed
   for(i = 0, j = 0; i < no2; i++, j++) {
-    // if file is written in invalid format will return exit code 104
-    if(fscanf(curve2fp, "%lf %lf", &x, &y) <= 0) exit(104);
+    // if file is written in invalid format will return code 104
+    if(fscanf(curve2fp, "%lf %lf", &x, &y) <= 0) return 104;
 
     curvetmp[j].x = x;
     curvetmp[j].y = y;
@@ -156,6 +156,7 @@ void createcurves(char* curve1filename, char* curve2filename, \
   } else {
     for(int i = 0; i < no2; i++) curve2[i] = curvetmp[i];
   }
+  return 0;
 }
 
 /*! \fn calculatefreespace(double &x1, double &y1, double &x2, double &y2,

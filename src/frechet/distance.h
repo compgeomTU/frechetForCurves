@@ -113,13 +113,14 @@ extern double **vRTe;
 extern double **hRTs;
 extern double **hRTe;
 
-/*! \fn void createcurves(char* curve1filename, char* curve2filename,
+/*! \fn int createcurves(char* curve1filename, char* curve2filename,
     bool reversecurve2)
     \brief
     Reads data from the two input files and stores it to curve point arrays.
 
-      Defined function exit codes
-      ===========================
+      Defined function return codes
+      =============================
+      0: Success
       101: Failed to open first curve file.\n
       102: Failed to parse first curve file.\n
       103: Failed to open second curve file.\n
@@ -128,7 +129,7 @@ extern double **hRTe;
     \param curve2filename Filename of second curve.
     \param reversecurve2 true agurment if second curve must be reversed
 */
-void createcurves(char* curve1filename, char* curve2filename, \
+int createcurves(char* curve1filename, char* curve2filename, \
                   bool reversecurve2);
 
 /*! \fn void create_freespace_reachabilitytable()
