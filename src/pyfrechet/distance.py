@@ -40,7 +40,7 @@ from _frechet._weak_distance.lib import getfreespace as \
 
 from _frechet._weak_distance.lib import isreachable as _wd_isreachable
 
-
+import os
 
 class StrongDistance:
 
@@ -48,50 +48,38 @@ class StrongDistance:
         _sd_createfreespace_reachabilitytable()
 
     @classmethod
-    def setcurves(cls, curve1_filepath, curve2_filepath, \
+    def setcurves(cls, curve_1_filepath, curve_2_filepath, \
         reverse_curve2 = False):
 
-        curve1_filepath_ascii = curve1_filepath.encode('ascii')
-        curve2_filepath_ascii = curve2_filepath.encode('ascii')
+        c1_abs_fp_ascii = os.path.abspath(curve_1_filepath).encode('ascii')
+        c2_abs_fp_ascii = os.path.abspath(curve_2_filepath).encode('ascii')
 
-        return_code = _sd_createcurves(curve1_filepath_ascii, \
-            curve2_filepath_ascii, reverse_curve2)
+        exit_status = _sd_createcurves(c1_abs_fp_ascii, c2_abs_fp_ascii, \
+            reverse_curve2)
 
-        if return_code != 0:
-
-            if return_code == 101:
-                raise FileNotFoundError(f"failed to open {curve1_filepath}")
-
-            if return_code == 102:
-                raise IOError(f"failed to parse {curve1_filepath}")
-
-            if return_code == 103:
-                raise FileNotFoundError(f"failed to open {curve2_filepath}")
-
-            if return_code == 104:
-                raise IOError(f"failed to parse {curve2_filepath}")
+        if exit_status != 0: raise IOError(os.strerror(exit_status))
 
         return cls()
 
-    def setfreespace(epsilon):
+    def setfreespace(self, epsilon):
         _sd_setfreespace(epsilon)
 
-    def getverticalcurve():
+    def getverticalcurve(self):
         return _sd_getverticalcurve()
 
-    def gethorizontalcurve():
+    def gethorizontalcurve(self):
         return _sd_gethorizontalcurve()
 
-    def getverticaledges():
+    def getverticaledges(self):
         return _sd_getverticaledges()
 
-    def gethorizontaledges():
+    def gethorizontaledges(self):
         return _sd_gethorizontaledges()
 
-    def getfreespace():
+    def getfreespace(self):
         return _sd_getverticaledges()
 
-    def isreachable():
+    def isreachable(self):
         _sd_setreachabilitytable()
         return _sd_isreachable()
 
@@ -107,22 +95,10 @@ class WeakDistance:
         curve1_filepath_ascii = curve1_filepath.encode('ascii')
         curve2_filepath_ascii = curve2_filepath.encode('ascii')
 
-        return_code = _wd_createcurves(curve1_filepath_ascii, \
+        exit_status = _wd_createcurves(curve1_filepath_ascii, \
         curve2_filepath_ascii, reverse_curve2)
 
-        if return_code != 0:
-
-            if return_code == 101:
-                raise FileNotFoundError(f"failed to open {curve1_filepath}")
-
-            if return_code == 102:
-                raise IOError(f"failed to parse {curve1_filepath}")
-
-            if return_code == 103:
-                raise FileNotFoundError(f"failed to open {curve2_filepath}")
-
-            if return_code == 104:
-                raise IOError(f"failed to parse {curve2_filepath}")
+        if exit_status != 0: raise IOError(os.strerror(exit_status))
 
         return cls()
 

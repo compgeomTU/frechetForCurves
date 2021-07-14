@@ -32,6 +32,7 @@
     \include <string.h>
     \include <math.h>
     \include <stdbool.h>
+    \include <errno.h>
     \include "frechet.h"
 */
 #include <stdlib.h>
@@ -39,6 +40,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdbool.h>
+#include <errno.h>
 #include "distance.h"
 
 /*! \var point *curve1
@@ -83,25 +85,25 @@ int createcurves(char* curve1filename, char* curve2filename, \
   int i, j;
   double x, y;
 
-  // return return code 101 if file did not open correctly
+  // return errno if file did not open correctly
   curve1fp = fopen(curve1filename, "r");
-  if(curve1fp == NULL) return 101;
+  if(curve1fp == NULL) return errno;
 
   // first count vertices
   no1 = 0;
 
-  while(fscanf(curve1fp, "%lf %lf", &x, &y) > 0) no1++;
+  while(fscanf(curve1fp, "%lf %lf", &x, &y) != EOF) no1++;
   fclose(curve1fp);
   curve1fp = fopen(curve1filename, "r");
-  if(curve1fp == NULL) return 101;
+  if(curve1fp == NULL) return errno;
 
   curve1 = (point*)malloc(no1 * sizeof(point));
 
   // read in curve, and delete duplicate vertices
   for(i = 0, j = 0; i < no1; i++, j++) {
 
-    // if file is written in invalid format will return code 102
-    if(fscanf(curve1fp , "%lf %lf", &x, &y) <= 0) return 102;
+    // if file is written in invalid format will return errno
+    if(fscanf(curve1fp , "%lf %lf", &x, &y) == 2) {
 
     curve1[j].x = x;
     curve1[j].y = y;
@@ -109,6 +111,9 @@ int createcurves(char* curve1filename, char* curve2filename, \
     if((j > 0) &&
        (curve1[j].x==curve1[j-1].x) &&
        (curve1[j].y == curve1[j-1].y)) j--;
+    }
+
+    if(ferror(curve1fp)) return errno;
   }
 
   if(j < no1) {
@@ -116,17 +121,17 @@ int createcurves(char* curve1filename, char* curve2filename, \
     curve1 = (point*)realloc(curve1, no1 * sizeof(point));
   }
 
-  // return code 103 if file did not open correctly
+  // return errno if file did not open correctly
   curve2fp = fopen(curve2filename, "r");
-  if(curve2fp == NULL) return 103;
+  if(curve2fp == NULL) return errno;
 
   // first count vertices
   no2 = 0;
 
-  while(fscanf(curve2fp, "%lf %lf", &x, &y) > 0) no2++;
+  while(fscanf(curve2fp, "%lf %lf", &x, &y) != EOF) no2++;
   fclose(curve2fp);
   curve2fp = fopen(curve2filename, "r");
-  if(curve2fp == NULL) return 103;
+  if(curve2fp == NULL) return errno;
 
   curvetmp = (point*)malloc(no2 * sizeof(point));
 
@@ -134,7 +139,7 @@ int createcurves(char* curve1filename, char* curve2filename, \
   // store in temporary array in order to reverse curve later if needed
   for(i = 0, j = 0; i < no2; i++, j++) {
     // if file is written in invalid format will return code 104
-    if(fscanf(curve2fp, "%lf %lf", &x, &y) <= 0) return 104;
+    if(fscanf(curve2fp, "%lf %lf", &x, &y) == 2) {
 
     curvetmp[j].x = x;
     curvetmp[j].y = y;
@@ -142,6 +147,9 @@ int createcurves(char* curve1filename, char* curve2filename, \
     if((j > 0) &&
        (curvetmp[j].x == curvetmp[j-1].x) &&
        (curvetmp[j].y == curvetmp[j-1].y)) j--;
+    }
+
+    if(ferror(curve2fp)) return errno;
   }
 
   if(j < no2) {

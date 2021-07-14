@@ -117,17 +117,11 @@ extern double **hRTe;
     bool reversecurve2)
     \brief
     Reads data from the two input files and stores it to curve point arrays.
-
-      Defined function return codes
-      =============================
-      0: Success
-      101: Failed to open first curve file.\n
-      102: Failed to parse first curve file.\n
-      103: Failed to open second curve file.\n
-      104: Failed to parse second curve file two.\n
     \param curve1filename Filename of first curve.
     \param curve2filename Filename of second curve.
-    \param reversecurve2 true agurment if second curve must be reversed
+    \param reversecurve2 true agurment if second curve must be reversed.
+    \return 0 if fopen() and fscanf() succeed
+    \return errno if fopen() or fscanf() fail
 */
 int createcurves(char* curve1filename, char* curve2filename, \
                   bool reversecurve2);
