@@ -39,21 +39,52 @@ Python API package. The plan for this API is to be able to:
 
 ### Executing program
 
-These are some examples of how the Python API could be used.
+These are some examples of how the .distance could be used:
 ```
-from PyFrechet.distance import StrongDistance, WeakDistance
-from PyFrechet.optimization import binarysearch
-from PyFrechet.visualization import FreeSpace
+from distance import StrongDistance, WeakDistance
 
-sd = StrongDistance.load_curves(curve_1=filename.txt, curve_2=filename.txt)
+sd = StrongDistance.setcurves("test_curve_1.txt", "test_curve_2.txt", True)
 
-iRT = sd.isReachableTable(epsilon=100)
-print(bool(iRT))
+sd.setfreespace(70)
 
-eps = BinarySearch.epsilon(sd, precision=0.1)
-print(eps)
+vc = sd.getverticalcurve()
+print(f"    First point on vertical curve: ({vc[0].x}, {vc[0].y})\n")
 
-FreeSpace.visualize(sd)
+hc = sd.getverticalcurve()
+print(f"    First point on horizonal curve: ({hc[0].x}, {hc[0].y})\n")
+
+ve = sd.getverticaledges()
+print(f"    Number of edges on vertical curve: {ve}\n")
+
+he = sd.gethorizontaledges()
+print(f"    Number of edges on vertical curve: {he}\n")
+
+fs = sd.getfreespace()
+print(f"""    First wall and floor or freespace cell:
+
+              {fs.vertical_end[0][0]}
+
+              {fs.vertical_start[0][0]}
+                    {fs.horizontal_start[0][0]}     {fs.horizontal_end[0][0]}
+    \n""")
+```
+
+These are some examples of how the .optimise could be used:
+
+(When 'setBoundaries()' is not called. Default starting bounds are maximum
+distance across free space diagram)
+
+```
+from distance import StrongDistance
+from optimise import BinarySearch
+
+sd = StrongDistance.setcurves("test_curve_1.txt", "test_curve_2.txt", True)
+
+bs = BinarySearch(sd)
+bs.setBoundaries(10, 100)
+bs.setPercision(0.00001)
+bs.search()
+
 ```
 
 ## Authors and Acknowledgements
