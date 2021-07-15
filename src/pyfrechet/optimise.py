@@ -1,55 +1,66 @@
 import math
+from decimal import Decimal
 
 class BinarySearch:
 
     dis = None
-    left_bound = None
-    right_bound = None
-    mid = None
-    precision = 0.001
+    l = None
+    r = None
+    m = None
+    prsn = 1
 
-    def __init__self(distance):
-        if type(distance).__name__ == "StrongDistance":
-            self.dis = distance
-        elif type(distance).__name__ == "WeakDistance":
+    def __init__(self, distance):
+        if type(distance).__name__ == "StrongDistance" or \
+            type(distance).__name__ == "WeakDistance":
             self.dis = distance
         else:
-            raise TypeError("""binary search must be performed on Frechet
-                               StrongDistance or WeakDistance class""")
+            raise TypeError(type(distance).__name__)
 
+    def setBoundaries(self, left, right):
+        self.l = left
+        self.r = right
 
-    def search():
+    def setPercision(self, precision):
+        self.prsn = Decimal(str(precision)).as_tuple().exponent
+
+    def search(self):
+
+        def verticelength(c, n):
+            l = 0
+            for i in range(n-1):
+                l += math.dist([c[i].x, c[i].y], [c[i+1].x, c[i+1].y])
+            return l
+
         #Check if boundieries have been set. if not will take maximum
         #distance across free space diagram
-        if left_bound == None or right_bound == None:
-            def verticelength(c, n):
-                lenght = 0
-                for i in range(n-1):
-                    lenght += math.dist([c[i].x, c[i].y], \
-                        [c[i+1].x, c[i+1].y])
-                return lenght
+        if self.l == None or self.r == None:
+            vl = verticelength(self.dis.getverticalcurve(), \
+                self.dis.getverticaledges())
+            hl = verticelength(self.dis.gethorizontalcurve(),\
+                self.dis.gethorizontaledges())
+            self.l = 0
+            self.r = math.dist(hl, 0, 0, vl)
 
-            vlenght = verticelength(dis.getverticalcurve(), \
-                dis.getverticaledges())
+            print("Configued starting boundieries as:")
+            print(f"    | {self.l} --- {self.r} |\n")
 
-            hlenght = verticelength(dis.gethorizontalcurve(),\
-                dis.gethorizontaledges())
+        self.m = (self.l + self.r) / 2
+        self.dis.setfreespace(self.m)
 
-            left_bound = 0
-            right_bound = math.dist(hlenght, 0, 0, vlenght)
-
-        mid = (left_bound + right_bound) / 2
-
-        self.dis.setfreespace(mid)
+        print(f"Checking if epsilon is reachable:")
+        print(f"    | {self.l} -- {self.m} -- {self.r} |")
 
         #check if path can be found
         if self.dis.isreachable():
             #check if mid value is percise enough to exit recurssion
-            if int(log10(mid))+1 >= int(log10(precision))+1:
-                left_bound = mid
-                return search()
+            if Decimal(str(self.m)).as_tuple().exponent >= self.prsn:
+                print(f"    Eps {self.m}: <reachable> <does not meet precision>\n")
+                self.r = self.m
+                return self.search()
             else:
-                return mid
+                print(f"    Eps {self.m}: <reachable>\n")
+                return self.m
         else:
-            right_bound = mid
-            return search()
+            print(f"    Eps {self.m}: <unreachable>\n")
+            self.l = self.m
+            return self.search()

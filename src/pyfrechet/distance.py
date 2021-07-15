@@ -21,7 +21,7 @@ from _frechet._strong_distance.lib import isreachable as _sd_isreachable
 
 from _frechet._weak_distance.lib import createcurves as _wd_createcurves
 from _frechet._weak_distance.lib import create_freespace_reachabilitytable \
-    as _wd_create_freespace_reachabilitytable
+    as _wd_createfreespace_reachabilitytable
 
 from _frechet._weak_distance.lib import setfreespace as _wd_setfreespace
 from _frechet._weak_distance.lib import computemaxdistances as \
@@ -77,7 +77,7 @@ class StrongDistance:
         return _sd_gethorizontaledges()
 
     def getfreespace(self):
-        return _sd_getverticaledges()
+        return _sd_getfreespace()
 
     def isreachable(self):
         _sd_setreachabilitytable()
@@ -91,12 +91,13 @@ class WeakDistance:
         _wd_createfreespace_reachabilitytable()
 
     @classmethod
-    def  setcurves(cls, curve1_filepath, curve2_filepath, reverse_curve2 = False):
-        curve1_filepath_ascii = curve1_filepath.encode('ascii')
-        curve2_filepath_ascii = curve2_filepath.encode('ascii')
+    def  setcurves(cls, curve_1_filepath, curve_2_filepath, reverse_curve2 = False):
 
-        exit_status = _wd_createcurves(curve1_filepath_ascii, \
-        curve2_filepath_ascii, reverse_curve2)
+        c1_abs_fp_ascii = os.path.abspath(curve_1_filepath).encode('ascii')
+        c2_abs_fp_ascii = os.path.abspath(curve_2_filepath).encode('ascii')
+
+        exit_status = _wd_createcurves(c1_abs_fp_ascii, c2_abs_fp_ascii, \
+            reverse_curve2)
 
         if exit_status != 0: raise IOError(os.strerror(exit_status))
 
@@ -106,20 +107,20 @@ class WeakDistance:
         self.eps = epsilon
         _wd_setfreespace(epsilon)
 
-    def getverticalcurve():
+    def getverticalcurve(self):
         return _wd_getverticalcurve()
 
-    def gethorizontalcurve():
+    def gethorizontalcurve(self):
         return _wd_gethorizontalcurve()
 
-    def getverticaledges():
+    def getverticaledges(self):
         return _wd_getverticaledges()
 
-    def gethorizontaledges():
+    def gethorizontaledges(self):
         return _wd_gethorizontaledges()
 
-    def getfreespace():
-        return _wd_getverticaledges()
+    def getfreespace(self):
+        return _wd_getfreespace()
 
     def isreachable(self):
         if _wd_gethorizontaledges() == 1 or _wd_getverticaledges() == 1:

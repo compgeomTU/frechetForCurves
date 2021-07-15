@@ -91,9 +91,9 @@ int createcurves(char* curve1filename, char* curve2filename, \
 
   // first count vertices
   no1 = 0;
-
   while(fscanf(curve1fp, "%lf %lf", &x, &y) != EOF) no1++;
   fclose(curve1fp);
+
   curve1fp = fopen(curve1filename, "r");
   if(curve1fp == NULL) return errno;
 
@@ -101,20 +101,16 @@ int createcurves(char* curve1filename, char* curve2filename, \
 
   // read in curve, and delete duplicate vertices
   for(i = 0, j = 0; i < no1; i++, j++) {
-
-    // if file is written in invalid format will return errno
     if(fscanf(curve1fp , "%lf %lf", &x, &y) == 2) {
-
     curve1[j].x = x;
     curve1[j].y = y;
-
     if((j > 0) &&
        (curve1[j].x==curve1[j-1].x) &&
        (curve1[j].y == curve1[j-1].y)) j--;
-    }
-
+    } else return ECANCELED;
     if(ferror(curve1fp)) return errno;
   }
+  fclose(curve1fp);
 
   if(j < no1) {
     no1 = j;
@@ -127,9 +123,9 @@ int createcurves(char* curve1filename, char* curve2filename, \
 
   // first count vertices
   no2 = 0;
-
   while(fscanf(curve2fp, "%lf %lf", &x, &y) != EOF) no2++;
   fclose(curve2fp);
+
   curve2fp = fopen(curve2filename, "r");
   if(curve2fp == NULL) return errno;
 
@@ -138,19 +134,16 @@ int createcurves(char* curve1filename, char* curve2filename, \
   // read in curve, and delete duplicate vertices
   // store in temporary array in order to reverse curve later if needed
   for(i = 0, j = 0; i < no2; i++, j++) {
-    // if file is written in invalid format will return code 104
     if(fscanf(curve2fp, "%lf %lf", &x, &y) == 2) {
-
     curvetmp[j].x = x;
     curvetmp[j].y = y;
-
     if((j > 0) &&
        (curvetmp[j].x == curvetmp[j-1].x) &&
        (curvetmp[j].y == curvetmp[j-1].y)) j--;
-    }
-
+    } else return ECANCELED;
     if(ferror(curve2fp)) return errno;
   }
+  fclose(curve2fp);
 
   if(j < no2) {
     no2 = j;
