@@ -3,11 +3,9 @@ import sys,os
 sys.path.insert(0, "../src/pyfrechet/")
 
 from distance import StrongDistance
-from optimise import BinarySearch
+from visualize import FreeSpaceDiagram
 
 sd = StrongDistance.setcurves("test_curve_1.txt", "test_curve_2.txt", True)
-
-bs = BinarySearch(sd)
-bs.setBoundaries(1, 1000)
-bs.setPercision(0.00001)
-bs.search()
+sd.setfreespace(85)
+fsd = FreeSpaceDiagram(sd)
+fsd.plot()
