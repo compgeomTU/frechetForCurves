@@ -1,4 +1,4 @@
-from shapely.geometry import Point, Polygon, LineString
+from shapely.geometry import Polygon, LineString
 import shapely.ops as so
 
 import numpy as np
@@ -29,6 +29,7 @@ class FreeSpaceDiagram:
                 grid[i, j] = (ve[i], he[j])
 
         polys = []
+        lss = []
 
         # loop for every cell in free space diagram
         for i in range(ve_count-2):
@@ -71,7 +72,6 @@ class FreeSpaceDiagram:
                         y = cell_grid[1][1] + (cell_fs[1][0] - 1)
                         addpoint((x, y))
 
-
                     # horizontal start + 1
                     if cell_fs[1][1] != -1:
                         x = cell_grid[1][0] + cell_fs[1][1]
@@ -100,25 +100,33 @@ class FreeSpaceDiagram:
 
                     # horizontal end
                     if cell_fs[3][1] != -1:
-                        x = cell_grid[3][0] + (cell_fs[3][1] - 1)
+                        x = cell_grid[3][0] + (cell_fs[3][1] - 1.0)
                         y = cell_grid[3][1]
                         addpoint((x, y))
 
                     if len(points) > 2:
                         polys.append(Polygon(points))
+                    else:
+                        lss.append(LineString(points))
 
-        multi_poly = so.cascaded_union(polys)
         fig, ax = plt.subplots()
-        ax.set_aspect('equal', 'datalim')
         ax.set_facecolor('tab:gray')
 
-        try:
-            for geom in multi_poly.geoms:
-                xs, ys = geom.exterior.xy
-                ax.fill(xs, ys, alpha=0.75, fc='w', ec='none')
-        except:
-                x, y = multi_poly.exterior.xy
-                ax.fill(x, y, alpha=0.75, fc='w', ec='none')
+        ax.set_xticks(ve)
+        ax.set_yticks(he)
+        ax.set_yticklabels([])
+        ax.set_xticklabels([])
+        ax.grid(color='black', linewidth = 0.25, alpha = 0.4)
+
+        for poly in polys:
+            x, y = poly.exterior.xy
+            ax.fill(x, y, alpha= 0.8, fc='w', ec='none')
+
+        for ls in lss:
+            x, y = ls.xy
+            ax.plot(x, y, color="white", alpha=0.8, linewidth=3.5)
+
+        plt.gca().set_aspect('equal', adjustable='box')
         plt.show()
 
 
