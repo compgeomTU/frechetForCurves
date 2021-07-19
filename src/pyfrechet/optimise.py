@@ -23,7 +23,7 @@ class BinarySearch:
     def setPercision(self, precision):
         self.prsn = Decimal(str(precision)).as_tuple().exponent
 
-    def run(self):
+    def search(self):
 
         def verticelength(c, n):
             l = 0
