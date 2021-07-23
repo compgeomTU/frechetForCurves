@@ -6,6 +6,7 @@ from distance import StrongDistance
 from visualize import FreeSpaceDiagram
 
 sd = StrongDistance.setcurves("test_curve_1.txt", "test_curve_2.txt", True)
-sd.setfreespace(300)
+sd.setfreespace(70)
 fsd = FreeSpaceDiagram(sd)
-fsd.plot(False)
+fsd.build_multipolygon(True)
+fsd.plot()
