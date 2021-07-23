@@ -6,6 +6,6 @@ from distance import StrongDistance
 from visualize import FreeSpaceDiagram
 
 sd = StrongDistance.setcurves("test_curve_1.txt", "test_curve_2.txt", True)
-sd.setfreespace(140)
+sd.setfreespace(300)
 fsd = FreeSpaceDiagram(sd)
-fsd.plot()
+fsd.plot(False)
