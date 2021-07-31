@@ -33,13 +33,13 @@ distance_cdef = """
 
     freespace getfreespace();
 
-    point* gethorizontalcurve();
+    point* getcurve1();
 
-    point* getverticalcurve();
+    point* getcurve2();
 
-    int gethorizontaledges();
+    int getcurve1lenght();
 
-    int getverticaledges();
+    int getcurve2lenght();
 
     bool isreachable();
 """

@@ -1,3 +1,6 @@
+## @package pyfrechet
+#  Documentation for this module.
+
 from _frechet._strong_distance.lib import createcurves as _sd_createcurves
 from _frechet._strong_distance.lib import create_freespace_reachabilitytable \
     as _sd_createfreespace_reachabilitytable
@@ -6,14 +9,12 @@ from _frechet._strong_distance.lib import setfreespace as _sd_setfreespace
 from _frechet._strong_distance.lib import setreachabilitytable as \
     _sd_setreachabilitytable
 
-from _frechet._strong_distance.lib import getverticalcurve as \
-    _sd_getverticalcurve
-from _frechet._strong_distance.lib import gethorizontalcurve as \
-    _sd_gethorizontalcurve
-from _frechet._strong_distance.lib import gethorizontaledges as \
-    _sd_gethorizontaledges
-from _frechet._strong_distance.lib import getverticaledges as \
-    _sd_getverticaledges
+from _frechet._strong_distance.lib import getcurve2 as _sd_getcurve2
+from _frechet._strong_distance.lib import getcurve1 as _sd_getcurve1
+from _frechet._strong_distance.lib import getcurve1lenght as \
+    _sd_getcurve1lenght
+from _frechet._strong_distance.lib import getcurve2lenght as \
+    _sd_getcurve2lenght
 from _frechet._strong_distance.lib import getfreespace as \
     _sd_getfreespace
 
@@ -27,14 +28,12 @@ from _frechet._weak_distance.lib import setfreespace as _wd_setfreespace
 from _frechet._weak_distance.lib import computemaxdistances as \
     _wd_computemaxdistances
 
-from _frechet._weak_distance.lib import getverticalcurve as \
-    _wd_getverticalcurve
-from _frechet._weak_distance.lib import gethorizontalcurve as \
-    _wd_gethorizontalcurve
-from _frechet._weak_distance.lib import gethorizontaledges as \
-    _wd_gethorizontaledges
-from _frechet._weak_distance.lib import getverticaledges as \
-    _wd_getverticaledges
+from _frechet._weak_distance.lib import getcurve2 as _wd_getcurve2
+from _frechet._weak_distance.lib import getcurve1 as _wd_getcurve1
+from _frechet._weak_distance.lib import getcurve1lenght as \
+    _wd_getcurve1lenght
+from _frechet._weak_distance.lib import getcurve2lenght as \
+    _wd_getcurve2lenght
 from _frechet._weak_distance.lib import getfreespace as \
     _wd_getfreespace
 
@@ -44,86 +43,139 @@ import os
 
 class StrongDistance:
 
-    def __init__(self):
+    __curve_1_file: str
+    __curve_2_file: str
+
+    def __init__(self, curve_1_file, curve_2_file):
+        self.__curve_1_file = curve_1_file
+        self.__curve_2_file = curve_2_file
         _sd_createfreespace_reachabilitytable()
 
+    def __str__(self):
+        try:
+            return f"""Frechet Distance Type  |  {self.__name__}
+                       Curve 1 File           |  {self.__curve_1_file}
+                       Curve 2 File           |  {self.__curve_2_file}
+                    """
+        except:
+            return f"{self.__name__} is empty."
+
     @classmethod
-    def setcurves(cls, curve_1_filepath, curve_2_filepath, \
+    def setCurves(cls, curve_1_file, curve_2_file, \
         reverse_curve2 = False):
 
-        c1_abs_fp_ascii = os.path.abspath(curve_1_filepath).encode('ascii')
-        c2_abs_fp_ascii = os.path.abspath(curve_2_filepath).encode('ascii')
+        curve1_abs = os.path.abspath(curve_1_file)
+        curve2_abs = os.path.abspath(curve_2_file)
 
-        exit_status = _sd_createcurves(c1_abs_fp_ascii, c2_abs_fp_ascii, \
-            reverse_curve2)
+        curve1_ascii = curve1_abs.encode('ascii')
+        curve2_ascii = curve2_abs.encode('ascii')
 
-        if exit_status != 0: raise IOError(os.strerror(exit_status))
+        errno = _sd_createcurves(curve1_ascii, curve2_ascii, reverse_curve2)
 
-        return cls()
+        if errno != 0:
+            raise IOError(f"{os.strerror(errno)} --"
+                          f"Check {curve_1_file} and {curve_2_file}"
+                          f"filepath and format for error."
+                           )
 
-    def setfreespace(self, epsilon):
+        return cls(curve_1_file, curve_2_file)
+
+    def setFreespace(self, epsilon):
         _sd_setfreespace(epsilon)
 
-    def getverticalcurve(self):
-        return _sd_getverticalcurve()
+    def getCurve2(self):
+        return _sd_getcurve2()
 
-    def gethorizontalcurve(self):
-        return _sd_gethorizontalcurve()
+    def getCurve1(self):
+        return _sd_getcurve1()
 
-    def getverticaledges(self):
-        return _sd_getverticaledges()
+    def getCurve2Lenght(self):
+        return _sd_getcurve2lenght()
 
-    def gethorizontaledges(self):
-        return _sd_gethorizontaledges()
+    def getCurve1Lenght(self):
+        return _sd_getcurve1lenght()
 
-    def getfreespace(self):
+    def getFreespace(self):
         return _sd_getfreespace()
 
-    def isreachable(self):
+    def getFileNames(self):
+        return self.__curve_1_file, self.__curve_2_file
+
+    def isReachable(self):
         _sd_setreachabilitytable()
         return _sd_isreachable()
 
 class WeakDistance:
 
-    eps = None
+    __curve_1_file: str
+    __curve_2_file: str
+    __epsilon: float
 
-    def __init__(self):
-        _wd_createfreespace_reachabilitytable()
+    def __init__(self, curve_1_file, curve_2_file):
+        self.__curve_1_file = curve_1_file
+        self.__curve_2_file = curve_2_file
+        _sd_createfreespace_reachabilitytable()
+
+    def __str__(self):
+        try:
+            return f"""Frechet Distance Type  |  {self.__name__}
+                       Curve 1 File           |  {self.__curve_1_file}
+                       Curve 2 File           |  {self.__curve_2_file}
+                    """
+        except:
+            return f"{self.__name__} is empty."
 
     @classmethod
-    def  setcurves(cls, curve_1_filepath, curve_2_filepath, reverse_curve2 = False):
+    def setCurves(cls, curve_1_file, curve_2_file, \
+        reverse_curve2 = False):
 
-        c1_abs_fp_ascii = os.path.abspath(curve_1_filepath).encode('ascii')
-        c2_abs_fp_ascii = os.path.abspath(curve_2_filepath).encode('ascii')
+        self.__curve_1_file = curve_1_file
+        self.__curve_2_file = curve_2_file
 
-        exit_status = _wd_createcurves(c1_abs_fp_ascii, c2_abs_fp_ascii, \
-            reverse_curve2)
+        curve1_abs = os.path.abspath(curve_1_file)
+        curve2_abs = os.path.abspath(curve_2_file)
 
-        if exit_status != 0: raise IOError(os.strerror(exit_status))
+        curve1_ascii = curve1_abs.encode('ascii')
+        curve2_ascii = curve2_abs.encode('ascii')
 
-        return cls()
+        errno = _wd_createcurves(curve1_ascii, curve2_ascii, reverse_curve2)
 
-    def setfreespace(self, epsilon):
-        self.eps = epsilon
+        if errno != 0:
+            raise IOError(f"{os.strerror(errno)} --"
+                          f"Check {curve_1_file} and {curve_2_file}"
+                          f"filepath and format for error."
+                           )
+
+        return cls(curve_1_file, curve_2_file)
+
+    def setFreespace(self, epsilon):
+        self.__epsilon = epsilon
         _wd_setfreespace(epsilon)
 
-    def getverticalcurve(self):
-        return _wd_getverticalcurve()
+    def getCurve2(self):
+        return _wd_getcurve2()
 
-    def gethorizontalcurve(self):
-        return _wd_gethorizontalcurve()
+    def getCurve1(self):
+        return _wd_getcurve1()
 
-    def getverticaledges(self):
-        return _wd_getverticaledges()
+    def getCurve2Lenght(self):
+        return _wd_getcurve2lenght()
 
-    def gethorizontaledges(self):
-        return _wd_gethorizontaledges()
+    def getCurve1Lenght(self):
+        return _wd_getcurve1lenght()
 
-    def getfreespace(self):
+    def getFreeSpace(self):
         return _wd_getfreespace()
 
-    def isreachable(self):
-        if _wd_gethorizontaledges() == 1 or _wd_getverticaledges() == 1:
-            return _wd_computemaxdistances(self.eps)
+    def getFileNames(self):
+        return self.__curve_1_file, self.__curve_2_file
+
+    def isReachable(self):
+        if _wd_getcurve1lenght() == 1 or _wd_getcurve2lenght() == 1:
+            try:
+                return _wd_computemaxdistances(self.__epsilon)
+            except ValueError:
+                raise ValueError("No value for Epsilon exists because"
+                                 "setfreespace() was never called.")
         else:
             return _wd_isreachable()

@@ -3,8 +3,10 @@ import sys,os
 sys.path.insert(0, "../src/pyfrechet/")
 
 from distance import StrongDistance
-from visualize import FreeSpaceDiagram
+from visualize import FreespaceDiagram
 
-sd = StrongDistance.setcurves("test_curve_1.txt", "test_curve_2.txt", True)
-fsd = FreeSpaceDiagram(sd)
-fsd.plot(10, 300, 10)
+sd = StrongDistance.setCurves("test_IVV.txt", "test_SPY.txt", False)
+fsd = FreespaceDiagram(sd)
+fsd.plot(0, 10, 1, True, True)
+
+# python3 test_pyfrechet_visualize.py

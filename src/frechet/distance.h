@@ -167,21 +167,21 @@ void setfreespace(double epsilon);
 */
 freespace getfreespace();
 
-/*! \fn point* gethorizontalcurve()
+/*! \fn point* getcurve1()
 */
-point* gethorizontalcurve();
+point* getcurve1();
 
-/*! \fn point* getverticalcurve()
+/*! \fn point* getcurve2()
 */
-point* getverticalcurve();
+point* getcurve2();
 
-/*! \fn int gethorizontaledges()
+/*! \fn int getcurve1lenght()
 */
-int gethorizontaledges();
+int getcurve1lenght();
 
-/*! \fn int getverticaledges()
+/*! \fn int getcurve2lenght()
 */
-int getverticaledges();
+int getcurve2lenght();
 
 /*! \fn bool isreachable()
     \brief
