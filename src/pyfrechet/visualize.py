@@ -7,25 +7,28 @@ from matplotlib.widgets import Slider
 import numpy as np
 import math
 
-from distance import *
+from distance import Distance
 
 class FreespaceDiagram:
 
+    __polys: dict
+    __buildSlider: bool
+
     def __init__(self, distance):
-        if isinstance(distance, StrongDistance) or \
-           isinstance(distance, WeakDistance):
-            self.dis = distance
+        if isinstance(distance, Distance):
+            self.__dis = distance
             self.__x_grid = distance.getCurve2Lenght()
             self.__y_grid = distance.getCurve1Lenght()
             self.__x_curve = distance.getCurve2()
             self.__y_curve = distance.getCurve1()
+            self.__polys = dict()
+            self.__buildSlider = False
         else:
-            raise TypeError(f"{distance.__name__} is not a valid distance."
-                            f"Must be of type {StrongDistance.__name__} or "
-                            f"{WeakDistance.__name__}."
+            raise TypeError(f"{distance.__name__} is not a valid argument."
+                            f"Must be of type StrongDistance or WeakDistance."
                             )
 
-    def _build_cells(self, weighted_cells=False):
+    def __build_cells(self, weighted_cells):
         if not weighted_cells:
             self.__x_vertices = np.ones(self.__x_grid-1, dtype=np.double)
             self.__y_vertices = np.ones(self.__y_grid-1, dtype=np.double)
@@ -53,17 +56,16 @@ class FreespaceDiagram:
                 y_len += length
                 self.__y_edges[i+1] = y_len
 
-    def _build_freespace(self, epsilon):
+    def __build_freespace(self):
         def addpoint(point):
             if point not in points: points.append(point)
 
-        self.dis.setFreespace(epsilon)
-        fs = self.dis.getFreespace()
+        fs = self.__dis.getFreeSpace()
 
-        polygons = []
+        polygons = list()
         for i in range(self.__x_grid-2):
             for j in range(self.__y_grid-2):
-                points = []
+                points = list()
 
                 if fs.vertical_end[i][j] != -1:
                     x = self.__x_edges[i] + (fs.vertical_end[i][j] * \
@@ -116,35 +118,45 @@ class FreespaceDiagram:
                 if len(points) > 2: polygons.append(Polygon(points))
         return so.cascaded_union(polygons)
 
-    def plot(self, min_epsilon, max_epsilon, precision, \
-             weighted_cells = False, gridlines = False):
+    def addSlider(self, min_epsilon, max_epsilon, precision):
+        self.__buildSlider = True
+        self.__min_epsilon = min_epsilon
+        self.__max_epsilon = max_epsilon
+        self.__precision = precision
 
-        self._build_cells(weighted_cells=weighted_cells)
-        f1, f2 = self.dis.getFileNames()
-
-        multipolygons = {}
-        for eps in range(min_epsilon, max_epsilon+precision, precision):
-            print(f"FreeSpaceDiagram -- Building Frame for EPS: {eps}\n")
-            multipolygons[float(eps)] = self._build_freespace(eps)
-
+    def plot(self, weighted_cells=False, gridlines=False):
+        f1, f2 = self.__dis.getFileNames()
+        self.__build_cells(weighted_cells=weighted_cells)
         fig, ax = plt.subplots()
-        plt.subplots_adjust(left=0.2, bottom=0.2)
 
-        ax_slider = plt.axes([0.25, 0.1, 0.65, 0.03])
-        slider = Slider(
-            ax=ax_slider,
-            label="Epsilon",
-            valmin=min_epsilon,
-            valmax=max_epsilon,
-            valstep=precision,
-            valinit=max_epsilon-precision,
-            color='red'
-        )
+        if self.__buildSlider:
+            plt.subplots_adjust(bottom=0.2)
+
+            for eps in np.arange(self.__min_epsilon,
+                                 self.__max_epsilon+self.__precision, \
+                                 self.__precision):
+                print(eps)
+                self.__dis.setFreeSpace(eps)
+                self.__polys[float(eps)] = self.__build_freespace()
+
+            ax_slider = plt.axes([0.25, 0.1, 0.65, 0.03])
+            slider = Slider(
+                ax=ax_slider,
+                label="Epsilon",
+                valmin=self.__min_epsilon,
+                valmax=self.__max_epsilon,
+                valstep=self.__precision,
+                valinit=self.__max_epsilon-self.__min_epsilon,
+                color='red'
+            )
+        else:
+            self.__polys[self.__dis.getEpsilon()] = self.__build_freespace()
 
         def update(val):
             ax.clear()
             ax.set_facecolor('tab:gray')
-            ax.set_title("Freespace Diagram")
+            name_ = self.__dis.__class__.__name__
+            ax.set_title(f"{name_} Free Space Diagram  |  Epsilon: {val}")
             ax.set_xlabel(f2)
             ax.set_ylabel(f1)
 
@@ -157,17 +169,20 @@ class FreespaceDiagram:
             else:
                 ax.grid(False)
 
-            try:
-                for geom in multipolygons[val].geoms:
+            if self.__polys[val].geom_type == 'MultiPolygon':
+                for geom in self.__polys[val].geoms:
                     xs, ys = geom.exterior.xy
                     ax.fill(xs, ys, alpha=0.75, fc='w', ec='none')
-            except:
-                xs, ys = multipolygons[val].exterior.xy
+            elif self.__polys[val].geom_type == 'Polygon':
+                xs, ys = self.__polys[val].exterior.xy
                 ax.fill(xs, ys, alpha=0.75, fc='w', ec='none')
             fig.canvas.draw_idle()
 
-        update(max_epsilon-precision)
-        slider.on_changed(update)
+        if self.__buildSlider:
+            update(self.__max_epsilon-self.__precision)
+            slider.on_changed(update)
+        else:
+            update(self.__dis.getEpsilon())
 
-        plt.gca().set_aspect('equal', adjustable='datalim')
+        plt.gca().set_aspect('equal', adjustable='box')
         plt.show()

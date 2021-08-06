@@ -1,16 +1,13 @@
-/*
-
-      Running test File
-      ---------------------
-      Compile terminal line command:
-      gcc -o test_free_space test_free_space.c -lm
-
-      Run terminal line command:
-      ./test_free_space
-
-    Author: Will Rodman
+/*  Author: Will Rodman
     wrodman@tulane.edu
 
+      Running test File:
+      ==================
+      Compile terminal line command:
+      gcc -o dumps/free_space free_space.c -lm
+
+      Run terminal line command:
+      ./dumbs/free_space
 */
 
 #include <stdio.h>
@@ -18,13 +15,24 @@
 #include <stdbool.h>
 #include "../src/frechet/strong_distance.c"
 
+char TEST_DATA[] = "sp500";
+bool REVERSE_CURVE = false
+unsigned int SAMPLE_SIZE = 5;
+
 int main(int argc, char *argv[]) {
-  char *curve2filename = "test_curve_1.txt";
-  char *curve1filename = "test_curve_2.txt";
 
-  printf("TESTING -- Free Space\n\n");
+  char curve1filename[64];
+  strcpy(curve1filename, TEST_DATA);
+  strcpy(curve1filename, "_data/sample_1.txt");
 
-  createcurves(curve1filename, curve2filename, true);
+  char curve2filename[64];
+  strcpy(curve2filename, TEST_DATA);
+  strcpy(curve2filename, "_data/sample_1.txt");
+
+  printf("Testing Free Space Data Structure:\n");
+  printf("==================================\n");
+
+  createcurves(curve1filename, curve2filename, REVERSE_CURVE);
   create_freespace_reachabilitytable();
   setfreespace(100);
 
@@ -36,8 +44,8 @@ int main(int argc, char *argv[]) {
   printf("  Vertical verticies: %d\n", v2);
   printf("--------------------------\n\n");
 
-  for(int i = 1; i < v1; i++) {
-    for(int j = 1; j < v2; j++) {
+  for(int i = SAMPLE_SIZE; i < v1; i++) {
+    for(int j = SAMPLE_SIZE; j < v2; j++) {
       printf("\n\n  Cell at (%d , %d):\n\n", i, j);
 
       printf(
