@@ -14,20 +14,26 @@ from optimise import BinarySearch
 TEST_DATA = "sp500"
 
 if TEST_DATA == "sp500":
+    REACHABLE_EPSILON = 5
+    UNREACHABLE_EPSILON = 1
     REVERSE_CURVE = False
-    CURVE_2_INDEX_0 = (1, 376.230011)
 
 elif TEST_DATA == "trajectory":
+    REACHABLE_EPSILON = 70
+    UNREACHABLE_EPSILON = 60
     REVERSE_CURVE = True
-    CURVE_2_INDEX_0 = (483282.000000, 4213251.000000)
 
 CURVE_1 = f"{TEST_DATA}_data/sample_1.txt"
 CURVE_2 = f"{TEST_DATA}_data/sample_2.txt"
 
 class pyfrechet_optimise(unittest.TestCase):
 
-    def setUp(self):
-        self.counter = 0
+    global REACHABLE_EPSILON
+    global UNREACHABLE_EPSILON
+    global REVERSE_CURVE
+
+    global CURVE_1
+    global CURVE_2
 
     def test_fail_BinarySearch_instance_argument(self):
         class BadClass(): pass
@@ -37,20 +43,20 @@ class pyfrechet_optimise(unittest.TestCase):
 
     def test_BinarySearch_default_search(self):
         sd = StrongDistance.setCurves(CURVE_1, CURVE_2, REVERSE_CURVE)
-        bs = BinarySearch(sd)
-        bs = bs.search()
+        BinarySearch(sd).search()
 
     def test_BinarySearch_custom_search(self):
         sd = StrongDistance.setCurves(CURVE_1, CURVE_2, REVERSE_CURVE)
         bs = BinarySearch(sd)
-        bs.setBoundaries(1, 70)
-        bs.setPercision(0.0001)
-        eps = bs.search()
+        bs.setBoundaries(UNREACHABLE_EPSILON, REACHABLE_EPSILON)
+        bs.setPercision(0.01)
+        epsilon = bs.search()
+        self.assertTrue(UNREACHABLE_EPSILON <= epsilon <= REACHABLE_EPSILON)
 
     def test_fail_BinarySearch_epsilon_search(self):
         sd = StrongDistance.setCurves(CURVE_1, CURVE_2, REVERSE_CURVE)
         bs = BinarySearch(sd)
-        bs.setBoundaries(0.1, 1)
+        bs.setBoundaries(0, UNREACHABLE_EPSILON)
         with self.assertRaises(RecursionError):
             bs.search()
 

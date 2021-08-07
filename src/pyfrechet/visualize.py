@@ -9,7 +9,7 @@ import math
 
 from distance import Distance
 
-class FreespaceDiagram:
+class FreeSpaceDiagram:
 
     __polys: dict
     __buildSlider: bool
@@ -24,7 +24,8 @@ class FreespaceDiagram:
             self.__polys = dict()
             self.__buildSlider = False
         else:
-            raise TypeError(f"{distance.__name__} is not a valid argument."
+            name_ = distance.__class__.__name__
+            raise TypeError(f"{name_} is not a valid argument."
                             f"Must be of type StrongDistance or WeakDistance."
                             )
 
@@ -135,7 +136,6 @@ class FreespaceDiagram:
             for eps in np.arange(self.__min_epsilon,
                                  self.__max_epsilon+self.__precision, \
                                  self.__precision):
-                print(eps)
                 self.__dis.setFreeSpace(eps)
                 self.__polys[float(eps)] = self.__build_freespace()
 
@@ -184,5 +184,6 @@ class FreespaceDiagram:
         else:
             update(self.__dis.getEpsilon())
 
-        plt.gca().set_aspect('equal', adjustable='box')
         plt.show()
+
+    def close(self): plt.close()
