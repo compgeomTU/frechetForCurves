@@ -1,3 +1,7 @@
+## @package pyfrechet
+#
+#  Module for visualizing free space diagram and rechable table.
+
 from shapely.geometry import Polygon, MultiPolygon
 import shapely.ops as so
 
@@ -9,11 +13,18 @@ import math
 
 from distance import Distance
 
+## Use class to visualize free space diagrams.
 class FreeSpaceDiagram:
 
+    ## Private - dictionary of epsilon and free space as type shapely Polygon
     __polys: dict
+
+    ## Private - boolean set too True if free space diagram includes sliding bar.
     __buildSlider: bool
 
+    ## Constructs FreeSpaceDiagram object.
+    #  @param self Object pointer.
+    #  @param StrongDistance or WeakDistance object.
     def __init__(self, distance):
         if isinstance(distance, Distance):
             self.__dis = distance
@@ -31,35 +42,37 @@ class FreeSpaceDiagram:
 
     def __build_cells(self, weighted_cells):
         if not weighted_cells:
-            self.__x_vertices = np.ones(self.__x_grid-1, dtype=np.double)
-            self.__y_vertices = np.ones(self.__y_grid-1, dtype=np.double)
-            self.__x_edges = np.arange(0, self.__x_grid, dtype=np.double)
-            self.__y_edges = np.arange(0, self.__y_grid, dtype=np.double)
+            self.__x_vertices = np.ones(self.__x_grid-1, dtype=np.float)
+            self.__y_vertices = np.ones(self.__y_grid-1, dtype=np.float)
+            self.__x_edges = np.arange(0, self.__x_grid, dtype=np.float)
+            self.__y_edges = np.arange(0, self.__y_grid, dtype=np.float)
         else:
-            self.__x_vertices = np.empty([self.__x_grid-1], dtype=np.double)
-            self.__y_vertices = np.empty([self.__y_grid-1], dtype=np.double)
-            self.__x_edges = np.empty([self.__x_grid], dtype=np.double)
-            self.__y_edges = np.empty([self.__y_grid], dtype=np.double)
-            x_len, self.__x_edges[0] = 0, 0
-            y_len, self.__y_edges[0] = 0, 0
+            self.__x_vertices = np.empty([self.__x_grid-1], dtype=np.float)
+            self.__y_vertices = np.empty([self.__y_grid-1], dtype=np.float)
+            self.__x_edges = np.empty([self.__x_grid], dtype=np.float)
+            self.__y_edges = np.empty([self.__y_grid], dtype=np.float)
+            x_len, self.__x_edges[0] = 0.0, 0.0
+            y_len, self.__y_edges[0] = 0.0, 0.0
 
             for i in range(self.__x_grid-2):
-                length = math.dist([self.__x_curve[i].x, self.__x_curve[i].y], \
-                                   [self.__x_curve[i+1].x, self.__x_curve[i+1].y])
-                self.__x_vertices[i] = length
-                x_len += length
+                len_ = math.dist([self.__x_curve[i].x, self.__x_curve[i].y], \
+                                 [self.__x_curve[i+1].x, self.__x_curve[i+1].y])
+                self.__x_vertices[i] = len_
+                x_len += len_
                 self.__x_edges[i+1] = x_len
 
             for i in range(self.__y_grid-2):
-                length = math.dist([self.__y_curve[i].x, self.__y_curve[i].y], \
-                                   [self.__y_curve[i+1].x, self.__y_curve[i+1].y])
-                self.__y_vertices[i] = length
-                y_len += length
+                len_ = math.dist([self.__y_curve[i].x, self.__y_curve[i].y], \
+                                 [self.__y_curve[i+1].x, self.__y_curve[i+1].y])
+                self.__y_vertices[i] = len_
+                y_len += len_
                 self.__y_edges[i+1] = y_len
 
     def __build_freespace(self):
         def addpoint(point):
-            if point not in points: points.append(point)
+            for point_ in points:
+                if np.allclose(point_, point): return
+            points.append(point)
 
         fs = self.__dis.getFreeSpace()
 
@@ -68,49 +81,49 @@ class FreeSpaceDiagram:
             for j in range(self.__y_grid-2):
                 points = list()
 
-                if fs.vertical_end[i][j] != -1:
+                if fs.vertical_end[i][j] != -1.0:
                     x = self.__x_edges[i] + (fs.vertical_end[i][j] * \
                         self.__x_vertices[i])
                     y = self.__y_edges[j]
                     addpoint((x, y))
 
-                if fs.vertical_start[i][j] != -1:
+                if fs.vertical_start[i][j] != -1.0:
                     x = self.__x_edges[i] + (fs.vertical_start[i][j] * \
                         self.__x_vertices[i])
                     y = self.__y_edges[j]
                     addpoint((x, y))
 
-                if fs.horizontal_start[i][j] != -1:
+                if fs.horizontal_start[i][j] != -1.0:
                     x = self.__x_edges[i]
                     y = self.__y_edges[j] + (fs.horizontal_start[i][j] * \
                         self.__y_vertices[j])
                     addpoint((x, y))
 
-                if fs.horizontal_end[i][j] != -1:
+                if fs.horizontal_end[i][j] != -1.0:
                     x = self.__x_edges[i]
                     y = self.__y_edges[j] + (fs.horizontal_end[i][j] * \
                         self.__y_vertices[j])
                     addpoint((x, y))
 
-                if fs.vertical_start[i][j+1] != -1:
+                if fs.vertical_start[i][j+1] != -1.0:
                     x = self.__x_edges[i+1] - ((1 - fs.vertical_start[i][j+1]) * \
                         self.__x_vertices[i])
                     y = self.__y_edges[j+1]
                     addpoint((x, y))
 
-                if fs.vertical_end[i][j+1] != -1:
+                if fs.vertical_end[i][j+1] != -1.0:
                     x = self.__x_edges[i+1] - ((1 - fs.vertical_end[i][j+1]) * \
                         self.__x_vertices[i])
                     y = self.__y_edges[j+1]
                     addpoint((x, y))
 
-                if fs.horizontal_end[i+1][j] != -1:
+                if fs.horizontal_end[i+1][j] != -1.0:
                     x = self.__x_edges[i+1]
                     y = self.__y_edges[j+1] - ((1 - fs.horizontal_end[i+1][j]) * \
                         self.__y_vertices[j])
                     addpoint((x, y))
 
-                if fs.horizontal_start[i+1][j] != -1:
+                if fs.horizontal_start[i+1][j] != -1.0:
                     x = self.__x_edges[i+1]
                     y = self.__y_edges[j+1] - ((1 - fs.horizontal_start[i+1][j]) * \
                         self.__y_vertices[j])
@@ -119,13 +132,26 @@ class FreeSpaceDiagram:
                 if len(points) > 2: polygons.append(Polygon(points))
         return so.cascaded_union(polygons)
 
-    def addSlider(self, min_epsilon, max_epsilon, precision):
+    ## Set sliding bar for range of epsilons in free space diagram.
+    #  @param self Object pointer.
+    #  @param min Minimum value of sliding bar.
+    #  @param max Maximum value of sliding bar.
+    #  @param step Incremental value of sliding bar.
+    def addEpsilonSlider(self, min, max, step):
         self.__buildSlider = True
-        self.__min_epsilon = min_epsilon
-        self.__max_epsilon = max_epsilon
-        self.__precision = precision
+        self.__min = min
+        self.__max = max
+        self.__step = step
 
-    def plot(self, weighted_cells=False, gridlines=False):
+    ## Plots free space diagram as matplotlib pyplot.
+    #
+    #  Call setFreeSpace() method from Distance object before calling plot() to
+    #  show free space diagram with epsilon value. Call addEpsilonSlider() before
+    #  calling plot() to show free space diagram with multiple epsilon values.
+    #  @param self Object pointer.
+    #  @param weighted_cells Plots curve vertices proportional to actual space.
+    #  @param cell_gridlines Plots cell boarder lines over free space diagram.
+    def plot(self, weighted_cells=False, cell_gridlines=False):
         f1, f2 = self.__dis.getFileNames()
         self.__build_cells(weighted_cells=weighted_cells)
         fig, ax = plt.subplots()
@@ -133,9 +159,7 @@ class FreeSpaceDiagram:
         if self.__buildSlider:
             plt.subplots_adjust(bottom=0.2)
 
-            for eps in np.arange(self.__min_epsilon,
-                                 self.__max_epsilon+self.__precision, \
-                                 self.__precision):
+            for eps in np.arange(self.__min, self.__max+self.__step, self.__step):
                 self.__dis.setFreeSpace(eps)
                 self.__polys[float(eps)] = self.__build_freespace()
 
@@ -143,10 +167,10 @@ class FreeSpaceDiagram:
             slider = Slider(
                 ax=ax_slider,
                 label="Epsilon",
-                valmin=self.__min_epsilon,
-                valmax=self.__max_epsilon,
-                valstep=self.__precision,
-                valinit=self.__max_epsilon-self.__min_epsilon,
+                valmin=self.__min,
+                valmax=self.__max,
+                valstep=self.__step,
+                valinit=self.__max-self.__min,
                 color='red'
             )
         else:
@@ -160,7 +184,7 @@ class FreeSpaceDiagram:
             ax.set_xlabel(f2)
             ax.set_ylabel(f1)
 
-            if gridlines:
+            if cell_gridlines:
                 ax.set_xticks(self.__x_edges)
                 ax.set_yticks(self.__y_edges)
                 ax.set_yticklabels([])
@@ -179,7 +203,7 @@ class FreeSpaceDiagram:
             fig.canvas.draw_idle()
 
         if self.__buildSlider:
-            update(self.__max_epsilon-self.__precision)
+            update(self.__max-self.__step)
             slider.on_changed(update)
         else:
             update(self.__dis.getEpsilon())

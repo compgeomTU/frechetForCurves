@@ -62,14 +62,16 @@ class pyfrechet_distance(unittest.TestCase):
         sd = StrongDistance.setCurves(CURVE_1, CURVE_2, REVERSE_CURVE)
         sd.setFreeSpace(10)
         fs = sd.getFreeSpace()
-        self.assertTrue(-1 <= fs.horizontal_start[0][0] <= 1, \
-                        "Invalid free space value")
-        self.assertTrue(-1 <= fs.horizontal_end[0][0] <= 1, \
-                        "Invalid free space value")
-        self.assertTrue(-1 <= fs.vertical_start[0][0] <= 1, \
-                        "Invalid free space value")
-        self.assertTrue(-1 <= fs.vertical_end[0][0] <= 1, \
-                        "Invalid free space value")
+        for i in range(sd.getCurve1Lenght()-1):
+            for j in range(sd.getCurve2Lenght()-1):
+                self.assertTrue(-1 <= fs.horizontal_start[i][j] <= 1, \
+                                "Invalid free space value")
+                self.assertTrue(-1 <= fs.horizontal_end[i][j] <= 1, \
+                                "Invalid free space value")
+                self.assertTrue(-1 <= fs.vertical_start[i][j] <= 1, \
+                                "Invalid free space value")
+                self.assertTrue(-1 <= fs.vertical_end[i][j] <= 1, \
+                                "Invalid free space value")
 
 if __name__ == '__main__':
     unittest.main()

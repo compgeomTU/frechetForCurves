@@ -37,8 +37,6 @@ class plot_data(unittest.TestCase):
         plt.plot(curve2["x"], curve2["y"], label = FILENAME2, color="red")
         plt.legend(loc = "upper left")
         plt.show()
-        time.sleep(5)
-        plt.close()
 
 if __name__ == '__main__':
     unittest.main()

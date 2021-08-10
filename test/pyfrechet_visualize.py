@@ -46,32 +46,24 @@ class pyfrechet_optimise(unittest.TestCase):
         sd.setFreeSpace(REACHABLE_EPSILON)
         fsd = FreeSpaceDiagram(sd)
         fsd.plot()
-        time.sleep(5)
-        fsd.close()
 
-    def test_FreeSpaceDiagram__addSlider(self):
+    def test_FreeSpaceDiagram__addEpsilonSlider(self):
         sd = StrongDistance.setCurves(CURVE_1, CURVE_2, REVERSE_CURVE)
         fsd = FreeSpaceDiagram(sd)
-        fsd.addSlider(UNREACHABLE_EPSILON, REACHABLE_EPSILON, 1)
+        fsd.addEpsilonSlider(UNREACHABLE_EPSILON, REACHABLE_EPSILON, 1)
         fsd.plot()
-        time.sleep(5)
-        fsd.close()
 
     def test_FreeSpaceDiagram__weighted_cells(self):
         sd = StrongDistance.setCurves(CURVE_1, CURVE_2, REVERSE_CURVE)
         fsd = FreeSpaceDiagram(sd)
         sd.setFreeSpace(REACHABLE_EPSILON)
         fsd.plot(True, False)
-        time.sleep(5)
-        fsd.close()
 
     def test_FreeSpaceDiagram__gridlines(self):
         sd = StrongDistance.setCurves(CURVE_1, CURVE_2, REVERSE_CURVE)
         fsd = FreeSpaceDiagram(sd)
         sd.setFreeSpace(REACHABLE_EPSILON)
-        fsd.plot(False, True)
-        time.sleep(5)
-        fsd.close()
+        fsd.plot(True, True)
 
 if __name__ == '__main__':
     unittest.main()

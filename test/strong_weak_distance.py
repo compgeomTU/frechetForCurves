@@ -53,7 +53,7 @@ class strong_weak_distance(unittest.TestCase):
         errno = _sd_createcurves(CURVE_1, CURVE_2, REVERSE_CURVE)
         self.assertEqual(0, errno, "_sd_createcurves() raised and error")
 
-        _sd_create_freespace_reachabilitytable()\
+        _sd_create_freespace_reachabilitytable()
 
     def test_strong_distance_unrechable_epsilon(self):
         _sd_setfreespace(UNREACHABLE_EPSILON);
