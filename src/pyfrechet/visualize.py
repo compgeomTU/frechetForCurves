@@ -209,5 +209,3 @@ class FreeSpaceDiagram:
             update(self.__dis.getEpsilon())
 
         plt.show()
-
-    def close(self): plt.close()

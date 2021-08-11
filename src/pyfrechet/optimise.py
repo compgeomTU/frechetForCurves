@@ -80,10 +80,6 @@ class BinarySearch:
             self.__l = 0
             self.__r = int(math.dist([l2, 0], [0, l1]))
 
-        print("Inital boundieries set:")
-        print(f"    | {self.__l} --- {self.__r} |")
-        print(f"    precision = {self.__p}\n")
-
         self.__m = (self.__l + self.__r) / 2
         self.__dis.setFreeSpace(self.__m)
 
