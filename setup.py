@@ -16,7 +16,7 @@ setup(
   download_url = 'https://github.com/compgeomTU/frechetForCurves/archive/refs/tags/0.1.tar.gz',
   package_dir = {'': 'src/'},
   long_description=long_description,
-  long_description_content_type='text/markdown'
+  long_description_content_type='text/markdown',
   install_requires=[
           'numpy',
           'matplotlib',
