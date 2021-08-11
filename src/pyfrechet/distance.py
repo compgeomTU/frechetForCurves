@@ -130,7 +130,7 @@ class StrongDistance(Distance):
     ## Creates instance that includes two curves from two separate files.
     #  @param cls Class pointer.
     #  @param curve_1_file Filepath of file containing first curve.
-    #  @param curve_1_file Filepath of file containing second curve.
+    #  @param curve_2_file Filepath of file containing second curve.
     #  @param reverse_curve_2 True if coordinates for second curve need to be reversed.
     #  @return Object pointer.
     @classmethod
@@ -207,7 +207,7 @@ class WeakDistance(Distance):
     ## Creates instance that includes two curves from two separate files.
     #  @param cls Class pointer.
     #  @param curve_1_file Filepath of file containing first curve.
-    #  @param curve_1_file Filepath of file containing second curve.
+    #  @param curve_2_file Filepath of file containing second curve.
     #  @param reverse_curve_2 True if coordinates for second curve need to be reversed.
     #  @return Object pointer.
     @classmethod

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['freespace_9',['freespace',['../structfreespace.html',1,'']]],
-  ['fsfound_10',['FSfound',['../weak__distance_8c.html#a4f9146ac552fb1697bd5e62db3d4807a',1,'FSfound():&#160;weak_distance.c'],['../weak__distance_8h.html#a4f9146ac552fb1697bd5e62db3d4807a',1,'FSfound():&#160;weak_distance.c']]]
+  ['binarysearch_16',['BinarySearch',['../classpyfrechet_1_1optimise_1_1_binary_search.html',1,'pyfrechet::optimise']]]
 ];

@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['hcolor_11',['hColor',['../weak__distance_8c.html#a5df8280ae48f14323b19757226d79c97',1,'hColor():&#160;weak_distance.c'],['../weak__distance_8h.html#ab4a0d298bc4b8e40148e3959d080bdd3',1,'hColor():&#160;weak_distance.c']]],
-  ['hfse_12',['hFSe',['../distance_8c.html#acb2a3b8100938f1e0a80fd632370e2d4',1,'hFSe():&#160;distance.c'],['../distance_8h.html#aa3faf13133c21b16fa8bba1c31b6c9ac',1,'hFSe():&#160;distance.c']]],
-  ['hfss_13',['hFSs',['../distance_8c.html#ab3cfa418636b92817f410cf72a2d5e47',1,'hFSs():&#160;distance.c'],['../distance_8h.html#ad3d24b6c9f0e6ed57019b098edf61175',1,'hFSs():&#160;distance.c']]],
-  ['hreachedfrom_14',['hReachedFrom',['../weak__distance_8c.html#a3cb5e362b3a2254d78fbc911ebf2eba0',1,'hReachedFrom():&#160;weak_distance.c'],['../weak__distance_8h.html#a5fac4a43a30eaaefc9a0d4a8ea113d40',1,'hReachedFrom():&#160;weak_distance.c']]],
-  ['hrte_15',['hRTe',['../distance_8c.html#a7d7f8a9554d775c61e48ba3edf16600a',1,'hRTe():&#160;distance.c'],['../distance_8h.html#a12633e6c8f21f67116c8f59dc7a3585e',1,'hRTe():&#160;distance.c']]],
-  ['hrts_16',['hRTs',['../distance_8c.html#ab561c7977d2150abeacc086e59f5c65b',1,'hRTs():&#160;distance.c'],['../distance_8h.html#a52eb08bbc33ab44cd5306f81d3c9cb38',1,'hRTs():&#160;distance.c']]]
+  ['computemaxdistances_17',['computemaxdistances',['../weak__distance_8c.html#a36f33f6475e4e3ea68a91973e8dc965f',1,'computemaxdistances(double epsilon):&#160;weak_distance.c'],['../weak__distance_8h.html#a36f33f6475e4e3ea68a91973e8dc965f',1,'computemaxdistances(double epsilon):&#160;weak_distance.c']]],
+  ['create_5ffreespace_5freachabilitytable_18',['create_freespace_reachabilitytable',['../distance_8h.html#ab40eb0b94d8aee506fd3adffd2c44ca7',1,'create_freespace_reachabilitytable():&#160;strong_distance.c'],['../strong__distance_8c.html#ab40eb0b94d8aee506fd3adffd2c44ca7',1,'create_freespace_reachabilitytable():&#160;strong_distance.c'],['../weak__distance_8c.html#ab40eb0b94d8aee506fd3adffd2c44ca7',1,'create_freespace_reachabilitytable():&#160;weak_distance.c']]],
+  ['createcurves_19',['createcurves',['../distance_8c.html#a497148a7c5d47b5b9e2e11502bfde0d5',1,'createcurves(char *curve1filename, char *curve2filename, bool reversecurve2):&#160;distance.c'],['../distance_8h.html#a497148a7c5d47b5b9e2e11502bfde0d5',1,'createcurves(char *curve1filename, char *curve2filename, bool reversecurve2):&#160;distance.c']]],
+  ['curve1_20',['curve1',['../distance_8c.html#a3f25295ee4ccd3de14aefb6adf5338e7',1,'curve1():&#160;distance.c'],['../distance_8h.html#afbfd317022590cb0256aa2aa2d2467bd',1,'curve1():&#160;distance.c']]],
+  ['curve2_21',['curve2',['../distance_8c.html#a47a4e2b4364e6ca75ac26b480731f9ac',1,'curve2():&#160;distance.c'],['../distance_8h.html#af13b70a31c5d0532fec7216ea42aec95',1,'curve2():&#160;distance.c']]],
+  ['curvetmp_22',['curvetmp',['../distance_8c.html#ae5b5b15d6ade59db47c9cf1d81aadd70',1,'curvetmp():&#160;distance.c'],['../distance_8h.html#af136086c24cbe266b5382df09f87617c',1,'curvetmp():&#160;distance.c']]]
 ];

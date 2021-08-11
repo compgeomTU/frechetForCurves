@@ -268,9 +268,11 @@ free_space_diagram.plot(cell_gridlines=True, weighted_cells=True)
 **output**
 ![Image](/docs/readme/figure_3.gif?raw=true)
 
-### Author
-Will Rodman
-wrodman@tulane.edu
+## Author
+- **Will Rodman** wrodman@tulane.edu
 
 ### Version History
-0.0.1
+- **0.1** 8-11-2021
+
+### Lisence
+MIT License • Copyright (c) 2021 Computational Geometry @ Tulane

@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['setfreespace_29',['setfreespace',['../distance_8c.html#aed7f7da816d618b68d333c6a11027024',1,'setfreespace(double epsilon):&#160;distance.c'],['../distance_8h.html#aed7f7da816d618b68d333c6a11027024',1,'setfreespace(double epsilon):&#160;distance.c']]],
-  ['setreachabilitytable_30',['setreachabilitytable',['../strong__distance_8c.html#a394bbcb8680e51e890a8ec6f648a1637',1,'setreachabilitytable():&#160;strong_distance.c'],['../strong__distance_8h.html#a394bbcb8680e51e890a8ec6f648a1637',1,'setreachabilitytable():&#160;strong_distance.c']]],
-  ['strong_5fdistance_2ec_31',['strong_distance.c',['../strong__distance_8c.html',1,'']]],
-  ['strong_5fdistance_2eh_32',['strong_distance.h',['../strong__distance_8h.html',1,'']]]
+  ['lasti_49',['lastI',['../weak__distance_8c.html#a1cc6a197192318706dd95763c1c118ad',1,'lastI():&#160;weak_distance.c'],['../weak__distance_8h.html#a1cc6a197192318706dd95763c1c118ad',1,'lastI():&#160;weak_distance.c']]],
+  ['lastinterval_50',['lastInterval',['../weak__distance_8c.html#a9cb005a79bae738217715c9f439dfdd2',1,'lastInterval():&#160;weak_distance.c'],['../weak__distance_8h.html#a9cb005a79bae738217715c9f439dfdd2',1,'lastInterval():&#160;weak_distance.c']]],
+  ['lastj_51',['lastJ',['../weak__distance_8c.html#a9b31113909233cf06b8183884db9de5b',1,'lastJ():&#160;weak_distance.c'],['../weak__distance_8h.html#a9b31113909233cf06b8183884db9de5b',1,'lastJ():&#160;weak_distance.c']]]
 ];
