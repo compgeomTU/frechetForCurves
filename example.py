@@ -2,12 +2,10 @@ import sys, os, unittest
 
 sys.path.insert(0, "src/pyfrechet/")
 from distance import StrongDistance, WeakDistance
-from optimise import BinarySearch
+from visualize import FreeSpaceDiagram
 
 strong_distance = StrongDistance.setCurves("test/trajectory_data/sample_1.txt", "test/trajectory_data/sample_2.txt", reverse_curve_2=True)
-binary_search = BinarySearch(strong_distance)
+strong_distance.setFreeSpace(100)
 
-binary_search.setBoundaries(left=50, right=100)
-binary_search.setPercision(0.001)
-eps = binary_search.search()
-print(eps)
+free_space_diagram = FreeSpaceDiagram(strong_distance)
+free_space_diagram.plot()
