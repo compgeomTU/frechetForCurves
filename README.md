@@ -176,7 +176,6 @@ Checking if epsilon is reachable:
 ... ...
 
 Checking if epsilon is reachable:
-
     | 67.7962646484375 -- 68.00946044921875 -- 68.22265625 |
     Eps 68.00946044921875: <unreachable>
 
@@ -214,7 +213,6 @@ Checking if epsilon is reachable:
 ... ...
 
 Checking if epsilon is reachable:
-
     | 67.1875 -- 67.96875 -- 68.75 |
     Eps 67.96875: <unreachable>
 
@@ -239,6 +237,37 @@ free_space_diagram.plot()
 ```
 **output**
 ![Image](/docs/readme/figure_1.png?raw=true)
+
+### Visualizing free space diagram for epsilon with cell gird lines and weighted cells:
+**example .py**
+```
+from pyfrechet.distance import StrongDistance
+from pyfrechet.visualize import FreeSpaceDiagram
+
+strong_distance = StrongDistance.setCurves("sample_1.txt", "sample_2.txt", True)
+strong_distance.setFreeSpace(100)
+
+free_space_diagram = FreeSpaceDiagram(strong_distance)
+free_space_diagram.plot(cell_gridlines=True, weighted_cells=True)
+```
+**output**
+![Image](/docs/readme/figure_2.png?raw=true)
+
+### Visualizing free space diagram with sliding bar for epsilon:
+**example .py**
+```
+from pyfrechet.distance import StrongDistance
+from pyfrechet.visualize import FreeSpaceDiagram
+
+strong_distance = StrongDistance.setCurves("sample_1.txt", "sample_2.txt", True)
+
+free_space_diagram = FreeSpaceDiagram(strong_distance)
+free_space_diagram.addEpsilonSlider(min=50, max=500, step=50)
+free_space_diagram.plot(cell_gridlines=True, weighted_cells=True)
+```
+**output**
+![Image](/docs/readme/figure_3.gif?raw=true)
+
 ### Author
 Will Rodman
 wrodman@tulane.edu
