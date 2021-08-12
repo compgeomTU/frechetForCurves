@@ -273,6 +273,7 @@ free_space_diagram.plot(cell_gridlines=True, weighted_cells=True)
 
 ### Version History
 - **0.1** 8-11-2021
+- **0.1.1** 8-12-2021
 
 ### Lisence
 MIT License • Copyright (c) 2021 Computational Geometry @ Tulane
