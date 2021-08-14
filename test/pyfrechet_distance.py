@@ -5,7 +5,7 @@
 # python3 pyfrechet_distance.py
 
 import sys, os, unittest
-sys.path.insert(0, "../src/pyfrechet/")
+sys.path.insert(0, "../src")
 from distance import Distance, StrongDistance, WeakDistance
 
 

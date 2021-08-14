@@ -6,7 +6,7 @@
 
 import sys, os, unittest, time
 
-sys.path.insert(0, "../src/pyfrechet/")
+sys.path.insert(0, "../src")
 
 from distance import StrongDistance
 from visualize import FreeSpaceDiagram

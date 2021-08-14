@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include "../src/frechet/weak_distance.c"
+#include "../src/weak_distance.c"
 
 char TEST_DATA[] = "sp500";
 

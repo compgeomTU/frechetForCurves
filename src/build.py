@@ -4,7 +4,6 @@
 # wrodman@tulane.edu
 
 from cffi import FFI
-import shutil
 
 strong_distance_ffi = FFI()
 weak_distance_ffi = FFI()
@@ -58,22 +57,21 @@ weak_distance_ffi.cdef(distance_cdef)
 weak_distance_ffi.cdef(weak_distance_cdef)
 
 strong_distance_ffi.set_source("_frechet._strong_distance",
-                    """
-                    #include "../../frechet/distance.h"
-                    #include "../../frechet/strong_distance.h"
+                   """
+                    #include "distance.h"
+                    #include "strong_distance.h"
                     """,
-                    sources = ["../frechet/strong_distance.c"],
+                    sources = ["strong_distance.c"],
                     libraries = ["m"])
 
 weak_distance_ffi.set_source("_frechet._weak_distance",
                     """
-                    #include "../../frechet/distance.h"
-                    #include "../../frechet/weak_distance.h"
+                    #include "distance.h"
+                    #include "weak_distance.h"
                     """,
-                    sources = ["../frechet/weak_distance.c"],
+                    sources = ["weak_distance.c"],
                     libraries = ["m"])
 
 if __name__ == "__main__":
-    weak_distance_ffi.compile(verbose = True)
     strong_distance_ffi.compile(verbose = True)
-    shutil.move("./_frechet", "../pyfrechet/_frechet")
+    weak_distance_ffi.compile(verbose = True)

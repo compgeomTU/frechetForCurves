@@ -1,3 +1,0 @@
-include src/pyfrechet/_frechet/*.so
-include src/pyfrechet/_frechet/*.c
-include src/pyfrechet/_frechet/*.o

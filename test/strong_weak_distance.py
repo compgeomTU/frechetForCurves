@@ -5,7 +5,7 @@
 # python3 strong_weak_distance.py
 
 import sys, unittest
-sys.path.insert(0, "../src/pyfrechet")
+sys.path.insert(0, "../src")
 
 from _frechet._strong_distance.lib import createcurves as _sd_createcurves
 from _frechet._strong_distance.lib import create_freespace_reachabilitytable as \
