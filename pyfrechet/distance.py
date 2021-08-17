@@ -2,40 +2,38 @@
 #
 #  Module for working with Frechet distances.
 
-from _strong_distance.lib import createcurves as _sd_createcurves
-from _strong_distance.lib import create_freespace_reachabilitytable \
-    as _sd_create_freespace_reachabilitytable
+from ._strong_distance.lib import createcurves as _sd_createcurves
+from ._strong_distance.lib import create_freespace_reachabilitytable \
+    as ._sd_create_freespace_reachabilitytable
 
-from _strong_distance.lib import setfreespace as _sd_setfreespace
-from _strong_distance.lib import setreachabilitytable as \
+from ._strong_distance.lib import setfreespace as _sd_setfreespace
+from ._strong_distance.lib import setreachabilitytable as \
     _sd_setreachabilitytable
 
-from _strong_distance.lib import getcurve2 as _sd_getcurve2
-from _strong_distance.lib import getcurve1 as _sd_getcurve1
-from _strong_distance.lib import getcurve1lenght as _sd_getcurve1lenght
+from ._strong_distance.lib import getcurve2 as _sd_getcurve2
+from ._strong_distance.lib import getcurve1 as _sd_getcurve1
+from ._strong_distance.lib import getcurve1lenght as _sd_getcurve1lenght
 from _strong_distance.lib import getcurve2lenght as _sd_getcurve2lenght
-from _strong_distance.lib import getfreespace as _sd_getfreespace
+from ._strong_distance.lib import getfreespace as _sd_getfreespace
 
-from _strong_distance.lib import isreachable as _sd_isreachable
+from ._strong_distance.lib import isreachable as _sd_isreachable
 
-from _weak_distance.lib import createcurves as _wd_createcurves
-from _weak_distance.lib import create_freespace_reachabilitytable \
-    as _wd_create_freespace_reachabilitytable
+from ._weak_distance.lib import createcurves as _wd_createcurves
+from ._weak_distance.lib import create_freespace_reachabilitytable \
+    as ._wd_create_freespace_reachabilitytable
 
-from _weak_distance.lib import setfreespace as _wd_setfreespace
-from _weak_distance.lib import computemaxdistances as _wd_computemaxdistances
+from ._weak_distance.lib import setfreespace as _wd_setfreespace
+from ._weak_distance.lib import computemaxdistances as _wd_computemaxdistances
 
-from _weak_distance.lib import getcurve2 as _wd_getcurve2
-from _weak_distance.lib import getcurve1 as _wd_getcurve1
-from _weak_distance.lib import getcurve1lenght as _wd_getcurve1lenght
-from _weak_distance.lib import getcurve2lenght as _wd_getcurve2lenght
-from _weak_distance.lib import getfreespace as _wd_getfreespace
+from ._weak_distance.lib import getcurve2 as _wd_getcurve2
+from ._weak_distance.lib import getcurve1 as _wd_getcurve1
+from ._weak_distance.lib import getcurve1lenght as _wd_getcurve1lenght
+from ._weak_distance.lib import getcurve2lenght as _wd_getcurve2lenght
+from ._weak_distance.lib import getfreespace as _wd_getfreespace
 
-from _weak_distance.lib import isreachable as _wd_isreachable
+from ._weak_distance.lib import isreachable as _wd_isreachable
 
 import os
-from cffi import FFI
-lib = FFI().dlopen("_weak_distance.cpython-39-darwin.so")
 
 ## Super class of StrongDistance and WeakDistance.
 #

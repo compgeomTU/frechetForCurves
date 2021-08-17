@@ -4,7 +4,7 @@
 # wrodman@tulane.edu
 
 from cffi import FFI
-from os import path
+import os
 
 strong_distance_ffi = FFI()
 weak_distance_ffi = FFI()
@@ -63,7 +63,6 @@ strong_distance_ffi.set_source("_strong_distance",
                     #include "strong_distance.h"
                     """,
                     sources = ["strong_distance.c"],
-                    include_dirs=['./'],
                     libraries = ["m"])
 
 weak_distance_ffi.set_source("_weak_distance",
@@ -72,9 +71,14 @@ weak_distance_ffi.set_source("_weak_distance",
                     #include "weak_distance.h"
                     """,
                     sources = ["weak_distance.c"],
-                    include_dirs=['./'],
                     libraries = ["m"])
 
 if __name__ == "__main__":
     strong_distance_ffi.compile(verbose = True)
     weak_distance_ffi.compile(verbose = True)
+    os.remove("_strong_distance.c")
+    os.remove("_strong_distance.o")
+    os.remove("strong_distance.o")
+    os.remove("_weak_distance.c")
+    os.remove("_weak_distance.o")
+    os.remove("weak_distance.o")

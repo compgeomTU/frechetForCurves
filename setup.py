@@ -1,8 +1,9 @@
+#from setuptools import setup
+from os import path
 from setuptools import setup
-import os
 
-this_directory = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(this_directory, 'README.md')) as f:
+this_directory = path.abspath(os.path.dirname(__file__))
+with open(path.join(this_directory, 'README.md')) as f:
     long_description = f.read()
 
 long_description = long_description.replace('![Image](/docs/', 'File unavailable: ')
@@ -13,7 +14,7 @@ long_description = long_description.replace('[/docs](/docs)', '/docs')
 setup(
   name = 'pyfrechet',
   packages = ['pyfrechet'],
-  version = '0.1.4',
+  version = '0.1.6',
   license='MIT',
   description = 'Frechet Distance Python Library',
   long_description_content_type='text/markdown',
@@ -21,7 +22,7 @@ setup(
   author = 'Will Rodman',
   author_email = 'wrodman@tulane.edu',
   url = 'https://github.com/compgeomTU/frechetForCurves',
-  download_url = 'https://github.com/compgeomTU/frechetForCurves/archive/refs/tags/0.1.tar.gz',
+  download_url = 'https://github.com/compgeomTU/frechetForCurves/archive/refs/tags/0.1.6.tar.gz',
   setup_requires=['cffi'],
   install_requires=[
           'numpy',
