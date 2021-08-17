@@ -4,7 +4,7 @@
 
 from ._strong_distance.lib import createcurves as _sd_createcurves
 from ._strong_distance.lib import create_freespace_reachabilitytable \
-    as ._sd_create_freespace_reachabilitytable
+    as _sd_create_freespace_reachabilitytable
 
 from ._strong_distance.lib import setfreespace as _sd_setfreespace
 from ._strong_distance.lib import setreachabilitytable as \
@@ -20,7 +20,7 @@ from ._strong_distance.lib import isreachable as _sd_isreachable
 
 from ._weak_distance.lib import createcurves as _wd_createcurves
 from ._weak_distance.lib import create_freespace_reachabilitytable \
-    as ._wd_create_freespace_reachabilitytable
+    as _wd_create_freespace_reachabilitytable
 
 from ._weak_distance.lib import setfreespace as _wd_setfreespace
 from ._weak_distance.lib import computemaxdistances as _wd_computemaxdistances

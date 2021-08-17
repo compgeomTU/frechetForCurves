@@ -5,8 +5,8 @@
 # python3 pyfrechet_distance.py
 
 import sys, os, unittest
-sys.path.insert(0, "../src")
-from distance import Distance, StrongDistance, WeakDistance
+#sys.path.insert(0, "../src")
+from pyfrechet.distance import Distance, StrongDistance, WeakDistance
 
 
 TEST_DATA = "sp500"

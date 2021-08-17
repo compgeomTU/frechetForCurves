@@ -14,7 +14,7 @@ long_description = long_description.replace('[/docs](/docs)', '/docs')
 setup(
   name = 'pyfrechet',
   packages = ['pyfrechet'],
-  version = '0.1.6',
+  version = '0.1.7',
   license='MIT',
   description = 'Frechet Distance Python Library',
   long_description_content_type='text/markdown',
