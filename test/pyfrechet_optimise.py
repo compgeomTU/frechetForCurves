@@ -6,7 +6,7 @@
 
 import sys, os, unittest
 
-sys.path.insert(0, "../src")
+sys.path.insert(0, "../pyfrechet")
 
 from distance import StrongDistance
 from optimise import BinarySearch

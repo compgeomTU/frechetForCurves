@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include "../src/strong_distance.c"
+#include "../pyfrechet/strong_distance.c"
 
 char TEST_DATA[] = "sp500";
 bool REVERSE_CURVE = false

@@ -57,7 +57,7 @@ strong_distance_ffi.cdef(strong_distance_cdef)
 weak_distance_ffi.cdef(distance_cdef)
 weak_distance_ffi.cdef(weak_distance_cdef)
 
-strong_distance_ffi.set_source("pyfrechet._strong_distance",
+strong_distance_ffi.set_source("_strong_distance",
                    """
                     #include "distance.h"
                     #include "strong_distance.h"
@@ -65,7 +65,7 @@ strong_distance_ffi.set_source("pyfrechet._strong_distance",
                     sources = ["strong_distance.c"],
                     libraries = ["m"])
 
-weak_distance_ffi.set_source("pyfrechet._weak_distance",
+weak_distance_ffi.set_source("_weak_distance",
                     """
                     #include "distance.h"
                     #include "weak_distance.h"

@@ -4,9 +4,9 @@
 # Command line to run program:
 # python3 pyfrechet_visualize.py
 
-import sys, os, unittest, time
+import sys, os, unittest
 
-sys.path.insert(0, "../src")
+sys.path.insert(0, "../pyfrechet")
 
 from distance import StrongDistance
 from visualize import FreeSpaceDiagram
