@@ -5,11 +5,9 @@
 # python3 pyfrechet_visualize.py
 
 import sys, os, unittest
-
-sys.path.insert(0, "../pyfrechet")
-
-from distance import StrongDistance
-from visualize import FreeSpaceDiagram
+sys.path.insert(0, "../")
+from pyfrechet.distance import StrongDistance
+from pyfrechet.visualize import FreeSpaceDiagram
 
 TEST_DATA = "sp500"
 

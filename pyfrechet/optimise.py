@@ -4,7 +4,8 @@
 
 import math
 from decimal import Decimal
-from distance import Distance
+
+from .distance import Distance
 
 ## Binary search algorithm.
 #

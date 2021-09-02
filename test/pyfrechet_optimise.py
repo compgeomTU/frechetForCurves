@@ -5,11 +5,9 @@
 # python3 pyfrechet_optimise.py
 
 import sys, os, unittest
-
-sys.path.insert(0, "../pyfrechet")
-
-from distance import StrongDistance
-from optimise import BinarySearch
+sys.path.insert(0, "../")
+from pyfrechet.distance import StrongDistance
+from pyfrechet.optimise import BinarySearch
 
 TEST_DATA = "sp500"
 

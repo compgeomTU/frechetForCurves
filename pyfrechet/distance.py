@@ -2,8 +2,8 @@
 #
 #  Module for working with Frechet distances.
 
-from _strong_distance import lib as _sd
-from _weak_distance import lib as _wd
+from ._strong_distance import lib as _sd
+from ._weak_distance import lib as _wd
 
 import os
 

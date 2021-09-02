@@ -1,4 +1,10 @@
-#from setuptools import setup
+# Setup file for uploading to PyPi
+#
+# Command line executions:
+# python3 pyfrechet/build.py
+# python3 setup.py sdist
+# twine upload dist/*
+
 from os import path
 from setuptools import setup
 
@@ -14,7 +20,7 @@ long_description = long_description.replace('[/docs](/docs)', '/docs')
 setup(
   name = 'pyfrechet',
   packages = ['pyfrechet'],
-  version = '0.1.11',
+  version = '0.1.13',
   license='MIT',
   description = 'Frechet Distance Python Library',
   long_description_content_type='text/markdown',
@@ -24,8 +30,6 @@ setup(
   url = 'https://github.com/compgeomTU/frechetForCurves',
   download_url = 'https://github.com/compgeomTU/frechetForCurves/archive/refs/tags/0.1.8.tar.gz',
   setup_requires=['cffi>=1.0.0'],
-  cffi_modules=["pyfrechet/build.py:strong_distance_ffi",
-                "pyfrechet/build.py:weak_distance_ffi"],
   install_requires=[
           'numpy',
           'matplotlib',

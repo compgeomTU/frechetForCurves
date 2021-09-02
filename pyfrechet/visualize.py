@@ -11,7 +11,7 @@ from matplotlib.widgets import Slider
 import numpy as np
 import math
 
-from distance import Distance
+from .distance import Distance
 
 ## Use class to visualize free space diagrams.
 class FreeSpaceDiagram:
