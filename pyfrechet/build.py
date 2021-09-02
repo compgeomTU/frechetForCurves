@@ -57,22 +57,6 @@ strong_distance_ffi.cdef(strong_distance_cdef)
 weak_distance_ffi.cdef(distance_cdef)
 weak_distance_ffi.cdef(weak_distance_cdef)
 
-strong_distance_ffi.set_source("_strong_distance",
-                   """
-                    #include "distance.h"
-                    #include "strong_distance.h"
-                    """,
-                    sources = ["strong_distance.c"],
-                    libraries = ["m"])
-
-weak_distance_ffi.set_source("_weak_distance",
-                    """
-                    #include "distance.h"
-                    #include "weak_distance.h"
-                    """,
-                    sources = ["weak_distance.c"],
-                    libraries = ["m"])
-
 if __name__ == "__main__":
     strong_distance_ffi.compile(verbose = True)
     weak_distance_ffi.compile(verbose = True)

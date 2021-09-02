@@ -2,37 +2,8 @@
 #
 #  Module for working with Frechet distances.
 
-from _strong_distance.lib import createcurves as _sd_createcurves
-
-from _strong_distance.lib import create_freespace_reachabilitytable \
-    as _sd_create_freespace_reachabilitytable
-
-from _strong_distance.lib import setfreespace as _sd_setfreespace
-from _strong_distance.lib import setreachabilitytable as \
-    _sd_setreachabilitytable
-
-from _strong_distance.lib import getcurve2 as _sd_getcurve2
-from _strong_distance.lib import getcurve1 as _sd_getcurve1
-from _strong_distance.lib import getcurve1lenght as _sd_getcurve1lenght
-from _strong_distance.lib import getcurve2lenght as _sd_getcurve2lenght
-from _strong_distance.lib import getfreespace as _sd_getfreespace
-
-from _strong_distance.lib import isreachable as _sd_isreachable
-
-from _weak_distance.lib import createcurves as _wd_createcurves
-from _weak_distance.lib import create_freespace_reachabilitytable \
-    as _wd_create_freespace_reachabilitytable
-
-from _weak_distance.lib import setfreespace as _wd_setfreespace
-from _weak_distance.lib import computemaxdistances as _wd_computemaxdistances
-
-from _weak_distance.lib import getcurve2 as _wd_getcurve2
-from _weak_distance.lib import getcurve1 as _wd_getcurve1
-from _weak_distance.lib import getcurve1lenght as _wd_getcurve1lenght
-from _weak_distance.lib import getcurve2lenght as _wd_getcurve2lenght
-from _weak_distance.lib import getfreespace as _wd_getfreespace
-
-from _weak_distance.lib import isreachable as _wd_isreachable
+from _strong_distance import lib as _sd
+from _weak_distance import lib as _wd
 
 import os
 
@@ -113,7 +84,7 @@ class StrongDistance(Distance):
     ## Constructs an empty object with no curves
     #  @param self Object pointer.
     def __init__(self):
-        _sd_create_freespace_reachabilitytable()
+        _sd.create_freespace_reachabilitytable()
 
     ## Formatted string containing curve filepaths and child class name.
     #  @param self Object pointer.
@@ -131,7 +102,7 @@ class StrongDistance(Distance):
     def setCurves(cls, curve_1_file, curve_2_file, reverse_curve_2=False):
         self = cls.__new__(cls)
         super(StrongDistance, self).__init__(curve_1_file, curve_2_file)
-        errno = _sd_createcurves(self._curve_1_file, self._curve_2_file, \
+        errno = _sd.createcurves(self._curve_1_file, self._curve_2_file, \
                                  reverse_curve_2)
         self._checkSetCurvesErrno(errno)
         self.__init__()
@@ -142,44 +113,44 @@ class StrongDistance(Distance):
     #  @param epsilon Epsilon.
     def setFreeSpace(self, epsilon):
         self._epsilon = epsilon
-        _sd_setfreespace(epsilon)
+        _sd.setfreespace(epsilon)
 
     ## Use to get coodinates of first curve
     #  @param self Object pointer.
     #  @return Array of coordinates; array of structs containing variables 'x' and 'y.'
     def getCurve1(self):
-        return _sd_getcurve1()
+        return _sd.getcurve1()
 
     ## Use to get coodinates of second curve
     #  @param self Object pointer.
     #  @return Array of coordinates; array of structs containing variables 'x' and 'y.'
     def getCurve2(self):
-        return _sd_getcurve2()
+        return _sd.getcurve2()
 
     ## Use to get number of coodinates for first curve
     #  @param self Object pointer.
     #  @return Lenght of array returned by getCurve1().
     def getCurve1Lenght(self):
-        return _sd_getcurve1lenght()
+        return _sd.getcurve1lenght()
 
     ## Use to get number of coodinates for second curve
     #  @param self Object pointer.
     #  @return Lenght of array returned by getCurve2().
     def getCurve2Lenght(self):
-        return _sd_getcurve2lenght()
+        return _sd.getcurve2lenght()
 
     ## Use to get free space data struct
     #  @param self Object pointer.
     #  @return Typedef struct freespace.
     def getFreeSpace(self):
-        return _sd_getfreespace()
+        return _sd.getfreespace()
 
     ## Use to check if path exists inside free space.
     #  @param self Object pointer.
     #  @return True if path exists; False if path is not found.
     def isReachable(self):
-        _sd_setreachabilitytable()
-        return _sd_isreachable()
+        _sd.setreachabilitytable()
+        return _sd.isreachable()
 
 ## Weak Frechet Distance API
 #
@@ -190,7 +161,7 @@ class WeakDistance(Distance):
     ## Constructs an empty object with no curves
     #  @param self Object pointer.
     def __init__(self):
-        _wd_create_freespace_reachabilitytable()
+        _wd.create_freespace_reachabilitytable()
 
     ## Formatted string containing curve filepaths and child class name.
     #  @param self Object pointer.
@@ -208,7 +179,7 @@ class WeakDistance(Distance):
     def setCurves(cls, curve_1_file, curve_2_file, reverse_curve_2=False):
         self = cls.__new__(cls)
         super(WeakDistance, self).__init__(curve_1_file, curve_2_file)
-        errno = _wd_createcurves(self._curve_1_file, self._curve_2_file, \
+        errno = _wd.createcurves(self._curve_1_file, self._curve_2_file, \
                                  reverse_curve_2)
         self._checkSetCurvesErrno(errno)
         self.__init__()
@@ -219,47 +190,47 @@ class WeakDistance(Distance):
     #  @param epsilon Epsilon.
     def setFreeSpace(self, epsilon):
         self._epsilon = epsilon
-        _wd_setfreespace(epsilon)
+        _wd.setfreespace(epsilon)
 
     ## Use to get coodinates of first curve
     #  @param self Object pointer.
     #  @return Array of coordinates; array of structs containing variables 'x' and 'y.'
     def getCurve1(self):
-        return _wd_getcurve1()
+        return _wd.getcurve1()
 
     ## Use to get coodinates of second curve
     #  @param self Object pointer.
     #  @return Array of coordinates; array of structs containing variables 'x' and 'y.'
     def getCurve2(self):
-        return _wd_getcurve2()
+        return _wd.getcurve2()
 
     ## Use to get number of coodinates for first curve
     #  @param self Object pointer.
     #  @return Lenght of array returned by getCurve1().
     def getCurve1Lenght(self):
-        return _wd_getcurve1lenght()
+        return _wd.getcurve1lenght()
 
     ## Use to get number of coodinates for second curve
     #  @param self Object pointer.
     #  @return Lenght of array returned by getCurve2().
     def getCurve2Lenght(self):
-        return _wd_getcurve2lenght()
+        return _wd.getcurve2lenght()
 
     ## Use to get free space data struct
     #  @param self Object pointer.
     #  @return Typedef struct freespace.
     def getFreeSpace(self):
-        return _wd_getfreespace()
+        return _wd.getfreespace()
 
     ## Use to check if path exists inside free space.
     #  @param self Object pointer.
     #  @return True if path exists; False if path is not found.
     def isReachable(self):
-        if _wd_getcurve1lenght() == 1 or _wd_getcurve2lenght() == 1:
+        if _wd.getcurve1lenght() == 1 or _wd.getcurve2lenght() == 1:
             try:
-                return _wd_computemaxdistances(super()._epsilon)
+                return _wd.computemaxdistances(super()._epsilon)
             except ValueError:
                 raise ValueError("No value for Epsilon exists because"
                                  "setfreespace() was never called.")
         else:
-            return _wd_isreachable()
+            return _wd.isreachable()
