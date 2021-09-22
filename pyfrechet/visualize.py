@@ -209,3 +209,43 @@ class FreeSpaceDiagram:
             update(self.__dis.getEpsilon())
 
         plt.show()
+
+## Use class to visualize trajectories of both curves.
+class Trajectories():
+
+    ## Constructs Trajectories object.
+    #  @param self Object pointer.
+    #  @param StrongDistance or WeakDistance object.
+    def __init__(self, distance):
+        if isinstance(distance, Distance):
+            self.__dis = distance
+        else:
+            name_ = distance.__class__.__name__
+            raise TypeError(f"{name_} is not a valid argument."
+                            f"Must be of type StrongDistance or WeakDistance."
+                            )
+                            
+    ## ...
+    #  @param self Object pointer.
+    def plot(self):
+
+        c1_x = list()
+        c1_y = list()
+        c2_x = list()
+        c2_y = list()
+
+        filename1, filename2 = self.__dis.getFileNames()
+
+        for p in self.__dis.getCurve1:
+            c1_x.append(p.x)
+            c1_y.append(p.y)
+
+        for p in self.__dis.getCurve2:
+            c2_x.append(p.x)
+            c2_y.append(p.y)
+
+        plt.title(f"Curve Trajectories")
+        plt.plot(curve1["x"], curve1["y"], label = filename1, color="blue")
+        plt.plot(curve2["x"], curve2["y"], label = filename2, color="red")
+        plt.legend(loc = "upper left")
+        plt.show()
