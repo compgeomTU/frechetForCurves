@@ -7,7 +7,7 @@
 import sys, os, unittest
 sys.path.insert(0, "../")
 from pyfrechet.distance import StrongDistance
-from pyfrechet.visualize import FreeSpaceDiagram
+from pyfrechet.visualize import FreeSpaceDiagram, Trajectories
 
 TEST_DATA = "sp500"
 
@@ -62,6 +62,13 @@ class pyfrechet_optimise(unittest.TestCase):
         fsd = FreeSpaceDiagram(sd)
         sd.setFreeSpace(REACHABLE_EPSILON)
         fsd.plot(True, True)
+
+    def test_Trajectories(self):
+        sd = StrongDistance.setCurves(CURVE_1, CURVE_2, REVERSE_CURVE)
+        t = Trajectories(sd)
+        t.plot()
+
+    
 
 if __name__ == '__main__':
     unittest.main()

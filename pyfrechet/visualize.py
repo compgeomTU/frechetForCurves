@@ -224,28 +224,28 @@ class Trajectories():
             raise TypeError(f"{name_} is not a valid argument."
                             f"Must be of type StrongDistance or WeakDistance."
                             )
-                            
-    ## ...
+
+    ## Build trajectories plot with matplotpib.
     #  @param self Object pointer.
     def plot(self):
-
-        c1_x = list()
-        c1_y = list()
-        c2_x = list()
-        c2_y = list()
-
         filename1, filename2 = self.__dis.getFileNames()
+        c1 = self.__dis.getCurve1()
+        c2 = self.__dis.getCurve2()
 
-        for p in self.__dis.getCurve1:
-            c1_x.append(p.x)
-            c1_y.append(p.y)
+        c1_x, c1_y = list(), list()
+        c2_x, c2_y = list(), list()
 
-        for p in self.__dis.getCurve2:
-            c2_x.append(p.x)
-            c2_y.append(p.y)
+
+        for i in range(self.__dis.getCurve1Lenght()):
+            c1_x.append(c1[i].x)
+            c1_y.append(c1[i].y)
+
+        for i in range(self.__dis.getCurve2Lenght()):
+            c2_x.append(c1[i].x)
+            c2_y.append(c1[i].y)
 
         plt.title(f"Curve Trajectories")
-        plt.plot(curve1["x"], curve1["y"], label = filename1, color="blue")
-        plt.plot(curve2["x"], curve2["y"], label = filename2, color="red")
+        plt.plot(c1_x, c1_y, label = filename1, color="blue")
+        plt.plot(c2_x, c2_y, label = filename2, color="red")
         plt.legend(loc = "upper left")
         plt.show()
