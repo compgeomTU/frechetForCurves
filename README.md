@@ -268,11 +268,26 @@ free_space_diagram.plot(cell_gridlines=True, weighted_cells=True)
 **output**
 ![Image](/docs/figure_3.gif?raw=true)
 
+### Visualizing trajectories:
+**example .py**
+```
+from pyfrechet.distance import StrongDistance
+from pyfrechet.visualize import Trajectories
+
+strong_distance = StrongDistance.setCurves("sample_1.txt", "sample_2.txt", True)
+
+trajectories = Trajectories(strong_distance)
+trajectories.plot()
+```
+**output**
+![Image](/docs/figure_2.png?raw=true)
+
 ## Author
 - **Will Rodman** wrodman@tulane.edu
 
 ### Version History
 - **0.1.13** 9-2-2021
+- **0.2.0** 10-3-2021 Added Trajectory class to visualize curves.
 
 ### Lisence
 MIT License • Copyright (c) 2021 Computational Geometry @ Tulane
