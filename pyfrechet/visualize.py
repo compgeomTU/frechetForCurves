@@ -241,8 +241,8 @@ class Trajectories():
             c1_y.append(c1[i].y)
 
         for i in range(self.__dis.getCurve2Lenght()):
-            c2_x.append(c1[i].x)
-            c2_y.append(c1[i].y)
+            c2_x.append(c2[i].x)
+            c2_y.append(c2[i].y)
 
         plt.title(f"Curve Trajectories")
         plt.plot(c1_x, c1_y, label = filename1, color="blue")
