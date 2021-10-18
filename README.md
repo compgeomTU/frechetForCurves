@@ -280,7 +280,7 @@ trajectories = Trajectories(strong_distance)
 trajectories.plot()
 ```
 **output**
-![Image](/docs/figure_2.png?raw=true)
+![Image](/docs/figure_4.png?raw=true)
 
 ## Author
 - **Will Rodman** wrodman@tulane.edu
